@@ -57,7 +57,7 @@ Other parameters can be change according to your specification.
 
 > Developers can extend the TextAvatar model according to their specification, currently below parameters are supported.
 
-````dart
+```dart
 TextAvatar(
     shape: Shape.Circular,
     size: 35
@@ -69,7 +69,8 @@ TextAvatar(
     numberLetters: 1,
 
     text: this.widget.userdata.fullname,
-)```
+)
+```
 
 
 
