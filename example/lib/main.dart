@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package/colorize_avatar.dart';
+import 'package:colorize_text_avatar/colorize_text_avatar.dart';
 
 void main() {
   runApp(MyApp());
@@ -96,6 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextAvatar(
+                  textColor: Colors.white,
                   shape: Shape.Circular,
                   text: "Ali Akalın",
                   numberLetters: 2,
@@ -104,6 +105,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   width: 12,
                 ),
                 TextAvatar(
+                  textColor: Colors.white,
                   shape: Shape.Circular,
                   text: "Bulut Peker",
                   numberLetters: 2,
@@ -112,6 +114,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   width: 12,
                 ),
                 TextAvatar(
+                  textColor: Colors.white,
                   shape: Shape.Circular,
                   text: "Ceylin Oztürk",
                   numberLetters: 2,
@@ -124,6 +127,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   width: 12,
                 ),
                 TextAvatar(
+                  textColor: Colors.white,
                   shape: Shape.Circular,
                   text: "Xantos Salvo",
                   numberLetters: 2,
@@ -132,6 +136,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   width: 12,
                 ),
                 TextAvatar(
+                  textColor: Colors.white,
                   shape: Shape.Circular,
                   text: "Yuval Noah",
                   numberLetters: 2,
@@ -140,20 +145,132 @@ class _MyHomePageState extends State<MyHomePage> {
                   width: 12,
                 ),
                 TextAvatar(
+                  textColor: Colors.white,
                   shape: Shape.Circular,
                   text: "Zoey Gen",
                   numberLetters: 2,
                 ),
               ],
             ),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextAvatar(
+                  textColor: Colors.white,
+                  text: "Ali Akalın",
+                  numberLetters: 2,
+                ),
+                SizedBox(
+                  width: 12,
+                ),
+                TextAvatar(
+                  textColor: Colors.white,
+                  text: "Bulut Peker",
+                  numberLetters: 2,
+                ),
+                SizedBox(
+                  width: 12,
+                ),
+                TextAvatar(
+                  textColor: Colors.white,
+                  text: "Ceylin Oztürk",
+                  numberLetters: 2,
+                ),
+                SizedBox(
+                  width: 12,
+                ),
+                Text('.....'),
+                SizedBox(
+                  width: 12,
+                ),
+                TextAvatar(
+                  textColor: Colors.white,
+                  text: "Xantos Salvo",
+                  numberLetters: 2,
+                ),
+                SizedBox(
+                  width: 12,
+                ),
+                TextAvatar(
+                  textColor: Colors.white,
+                  text: "Yuval Noah",
+                  numberLetters: 2,
+                ),
+                SizedBox(
+                  width: 12,
+                ),
+                TextAvatar(
+                  textColor: Colors.white,
+                  text: "Zoey Gen",
+                  numberLetters: 2,
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextAvatar(
+                  textColor: Colors.white,
+                  text: "Ali Akalın",
+                  numberLetters: 1,
+                ),
+                SizedBox(
+                  width: 12,
+                ),
+                TextAvatar(
+                  textColor: Colors.white,
+                  text: "Bulut Peker",
+                  numberLetters: 1,
+                ),
+                SizedBox(
+                  width: 12,
+                ),
+                TextAvatar(
+                  textColor: Colors.white,
+                  text: "Ceylin Oztürk",
+                  numberLetters: 1,
+                ),
+                SizedBox(
+                  width: 12,
+                ),
+                Text('.....'),
+                SizedBox(
+                  width: 12,
+                ),
+                TextAvatar(
+                  textColor: Colors.white,
+                  text: "Xantos Salvo",
+                  numberLetters: 1,
+                ),
+                SizedBox(
+                  width: 12,
+                ),
+                TextAvatar(
+                  textColor: Colors.white,
+                  text: "Yuval Noah",
+                  numberLetters: 1,
+                ),
+                SizedBox(
+                  width: 12,
+                ),
+                TextAvatar(
+                  textColor: Colors.white,
+                  text: "Zoey Gen",
+                  numberLetters: 1,
+                ),
+              ],
+            ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
