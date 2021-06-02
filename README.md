@@ -2,7 +2,7 @@
 
 Colorize Text Avatar is a package to generate avatar based on your user initials. It supports to generate avatars based on your specification or it colorize your avatar by using predefined colors. Enjoy it!
 
-![Colorize Text Avatar](/example/screenshots/img_1)
+![Colorize Text Avatar](/example/screenshots/img_1.png)
 
 ## Getting Started 🔥
 
@@ -20,7 +20,7 @@ TextAvatar(
 ),
 ```
 
-![Colorize Text Avatar](/example/screenshots/img_1)
+![Colorize Text Avatar](/example/screenshots/img_1.png)
 
 ### Parameters of Text Avatar 😎
 
@@ -35,7 +35,7 @@ TextAvatar(
 )
 ```
 
-![Colorize Text Avatar](/example/screenshots/img_2)
+![Colorize Text Avatar](/example/screenshots/img_2.png)
 
 numberLetters parameter allows user to generate Avatar more specific number of character. 
 
@@ -50,7 +50,7 @@ TextAvatar(
 )
 ```
 
-![Colorize Text Avatar](/example/screenshots/img_3)
+![Colorize Text Avatar](/example/screenshots/img_3.png)
 
 
 Other parameters can be change according to your specification.
