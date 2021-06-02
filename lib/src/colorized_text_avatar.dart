@@ -10,24 +10,24 @@ class TextAvatar extends StatelessWidget {
   double? size;
   final String? text;
   final double? fontSize;
+  final int? numberLetters;
   final FontWeight? fontWeight;
   final String? fontFamily;
-  final int? numberLetters;
   final bool? upperCase;
 
   TextAvatar(
       {Key? key,
       @required this.text,
-      @required this.textColor,
+      this.textColor,
       this.backgroundColor,
       this.shape,
-      this.size,
       this.numberLetters,
+      this.size,
       this.fontWeight = FontWeight.bold,
       this.fontFamily,
       this.fontSize = 16,
       this.upperCase = false}) {
-    assert(numberLetters! > 0);
+    //assert(numberLetters! > 0);
   }
 
   @override
@@ -40,13 +40,11 @@ class TextAvatar extends StatelessWidget {
   }
 
   Color _colorBackgroundConfig() {
-    if (backgroundColor == null) {
-      return Colors.black;
-    } else if (RegExp(r'[A-Z]|').hasMatch(
+    if (RegExp(r'[A-Z]|').hasMatch(
       _textConfiguration(),
     )) {
       backgroundColor =
-          colorData[_textConfiguration().toLowerCase().toString()];
+          colorData[_textConfiguration()[0].toLowerCase().toString()];
     }
     return backgroundColor!;
   }
@@ -72,6 +70,7 @@ class TextAvatar extends StatelessWidget {
     if (arrayLeeters.length > 1 && arrayLeeters.length == numberLetters) {
       return '${arrayLeeters[0][0].trim()}${arrayLeeters[1][0].trim()}';
     }
+
     return '${newText[0]}';
   }
 

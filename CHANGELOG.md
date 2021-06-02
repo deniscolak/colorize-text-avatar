@@ -1,3 +1,8 @@
+## [1.0.0] - 02062021 Documentation Update
+
+* Documentation update to display images.
+
+
 ## [1.0.0] - 02062021 Nullsafety TextAvatar
 
 * In that release minimum viable and usefull plugin released to allow developers to create colorful TextAvatars based on the Name Surname or given specification. 
