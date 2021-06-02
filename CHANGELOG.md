@@ -1,6 +1,10 @@
-## [1.0.0] - 02062021 Documentation Update
+## [1.0.2] - 02062021 Documentation Update
 
-* Documentation update to display images.
+* Images and examples are updated.
+
+## [1.0.1] - 02062021 Documentation Update
+
+* Documentation update to display images on pub.dev.
 
 
 ## [1.0.0] - 02062021 Nullsafety TextAvatar

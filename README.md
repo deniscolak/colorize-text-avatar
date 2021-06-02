@@ -2,7 +2,7 @@
 
 Colorize Text Avatar is a package to generate avatar based on your user initials. It supports to generate avatars based on your specification or it colorize your avatar by using predefined colors. Enjoy it!
 
-![Colorize Text Avatar](https://github.com/deniscolak/colorize-text-avatar/raw/master/example/screenshots/img_1.png)
+![Colorize Text Avatar](https://github.com/deniscolak/colorize-text-avatar/raw/master/example/screenshots/img_4.png)
 
 ## Getting Started 🔥
 
@@ -17,14 +17,14 @@ Here is the only mandatory parameter is text.
 ```dart
 TextAvatar(
     text: "Deniz Çolak",
-),
+)
 ```
 
 ![Colorize Text Avatar](https://github.com/deniscolak/colorize-text-avatar/raw/master/example/screenshots/img_1.png)
 
 ### Parameters of Text Avatar 😎
 
-Here is the predefined shapes: Rectangle, Circular or None, if no shape is null the default value similar with Rectangle but not same.
+Here is the predefined shapes: Rectangle, Circular or None, if shape is null or not defined the default value similar with Rectangle but not same.
 
 > Shape.Rectangle, Shape.Circular, Shape.None can be use.
 
@@ -39,7 +39,7 @@ TextAvatar(
 
 numberLetters parameter allows user to generate Avatar more specific number of character. 
 
-> Developer can predefine size and numberLetters, if numberletters is null the default value is 1.
+> Developer can predefine size and numberLetters, if numberletters is null or not defined the default value is 1.
 
 ```dart
 TextAvatar(

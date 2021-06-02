@@ -1,6 +1,6 @@
 name: colorize_text_avatar
 description: Colorize Text Avatar is a package to generate avatar based on your user initials. 
-version: 1.0.1
+version: 1.0.2
 homepage: https://github.com/deniscolak/colorize-text-avatar
 
 environment:
