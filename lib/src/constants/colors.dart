@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-var colorData = {
+const Map<String, Color> colorData = {
   "a": Color.fromRGBO(226, 95, 81, 1),
   "b": Color.fromRGBO(242, 96, 145, 1),
   "c": Color.fromRGBO(187, 101, 202, 1),

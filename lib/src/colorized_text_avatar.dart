@@ -1,127 +1,65 @@
-import 'package:colorize_text_avatar/colorize_text_avatar.dart';
 import 'package:colorize_text_avatar/src/constants/colors.dart';
-import 'package:colorize_text_avatar/src/constants/enums.dart';
 import 'package:flutter/material.dart';
 
 class TextAvatar extends StatelessWidget {
-  Shape? shape;
-  Color? backgroundColor;
-  Color? textColor;
-  double? size;
-  final String? text;
-  final double? fontSize;
-  final int? numberLetters;
-  final FontWeight? fontWeight;
-  final String? fontFamily;
-  final bool? upperCase;
+  const TextAvatar({
+    Key? key,
+    required this.text,
+    this.numberLetters = 2,
+    this.upperCase = false,
+    TextStyle? style,
+    this.width = 48,
+    this.height = 48,
+    this.borderRadius,
+    this.shape = BoxShape.rectangle,
+    this.backgroundColor,
+  })  : style = style ?? const TextStyle(color: Colors.white),
+        super(key: key);
 
-  TextAvatar(
-      {Key? key,
-      @required this.text,
-      this.textColor,
-      this.backgroundColor,
-      this.shape,
-      this.numberLetters,
-      this.size,
-      this.fontWeight = FontWeight.bold,
-      this.fontFamily,
-      this.fontSize = 16,
-      this.upperCase = false}) {
-    //assert(numberLetters! > 0);
-  }
+  final String text;
+  final int numberLetters;
+  final bool upperCase;
+  final TextStyle style;
+
+  final BoxShape shape;
+  final double? width, height;
+  final Color? backgroundColor;
+  final BorderRadiusGeometry? borderRadius;
 
   @override
   Widget build(BuildContext context) {
-    shape = (shape == null) ? Shape.Rectangle : shape;
-    size = (size == null || size! < 32.0) ? 48.0 : size;
-    backgroundColor = _colorBackgroundConfig();
-    textColor = _colorTextConfig();
-    return _textDisplay();
-  }
+    final String textConfiguration = _textConfiguration();
 
-  Color _colorBackgroundConfig() {
-    if (RegExp(r'[A-Z]|').hasMatch(
-      _textConfiguration(),
-    )) {
-      backgroundColor =
-          colorData[_textConfiguration()[0].toLowerCase().toString()];
-    }
-    return backgroundColor!;
-  }
-
-  Color _colorTextConfig() {
-    if (textColor == null)
-      return Colors.white;
-    else
-      return textColor!;
-  }
-
-  String _toString({String? value}) {
-    return String.fromCharCodes(
-      value!.runes.toList(),
+    return Container(
+      width: width,
+      height: height,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        borderRadius: borderRadius,
+        color: _colorBackgroundConfig(textConfiguration),
+        shape: shape,
+      ),
+      child: Text(textConfiguration, style: style),
     );
+  }
+
+  Color? _colorBackgroundConfig(String text) {
+    Color? background = backgroundColor;
+    if (RegExp(r'[A-Z]|').hasMatch(text)) {
+      background = colorData[text[0].toLowerCase().toString()];
+    }
+    return background;
   }
 
   String _textConfiguration() {
-    var newText = text == null ? '?' : _toString(value: text);
-    newText = upperCase! ? newText.toUpperCase() : newText;
-    var arrayLeeters = newText.trim().split(' ');
+    String newText = String.fromCharCodes(text.runes.toList());
+    newText = upperCase ? newText.toUpperCase() : newText;
+    List<String> arrayLetters = newText.trim().split(' ');
 
-    if (arrayLeeters.length > 1 && arrayLeeters.length == numberLetters) {
-      return '${arrayLeeters[0][0].trim()}${arrayLeeters[1][0].trim()}';
+    if (arrayLetters.length > 1 && arrayLetters.length == numberLetters) {
+      return '${arrayLetters[0][0].trim()}${arrayLetters[1][0].trim()}';
     }
 
     return '${newText[0]}';
-  }
-
-  Widget _buildText() {
-    return Text(
-      _textConfiguration(),
-      style: TextStyle(
-        color: textColor,
-        fontSize: fontSize,
-        fontWeight: fontWeight,
-        fontFamily: fontFamily,
-      ),
-    );
-  }
-
-  _buildTextType() {
-    switch (shape) {
-      case Shape.Rectangle:
-        return RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(6.0),
-        );
-      case Shape.Circular:
-        return RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(size! / 2),
-        );
-      case Shape.None:
-        return RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(0.0),
-        );
-      default:
-        {
-          return RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(size! / 2),
-          );
-        }
-    }
-  }
-
-  Widget _textDisplay() {
-    return Container(
-      child: Material(
-        shape: _buildTextType(),
-        color: backgroundColor,
-        child: Container(
-          height: size,
-          width: size,
-          child: Center(
-            child: _buildText(),
-          ),
-        ),
-      ),
-    );
   }
 }
