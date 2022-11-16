@@ -60,7 +60,7 @@ Other parameters can be change according to your specification.
 ```dart
 TextAvatar(
     shape: Shape.Circular,
-    size: 35
+    size: 35,
     textColor: Colors.white,
     fontSize: 14,
     fontWeight: FontWeight.w600,
