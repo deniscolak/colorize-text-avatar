@@ -1,3 +1,7 @@
+## [1.0.3] - 02062021 Documentation Update
+
+* Bug fix for background color
+
 ## [1.0.2] - 02062021 Documentation Update
 
 * Images and examples are updated.
