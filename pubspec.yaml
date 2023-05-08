@@ -1,7 +1,7 @@
-name: colorize_text_avatar
-description: Colorize Text Avatar is a package to generate avatar based on your user initials. 
+name: hashbrowns_text_avatar
+description: Colorize Text Avatar is a package to generate avatar based on your user initials using hashbrowns
 version: 1.0.3
-homepage: https://github.com/deniscolak/colorize-text-avatar
+homepage: https://github.com/acterglobal/hashbrowns-text-avatar
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
@@ -10,6 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  hashbrowns: ^0.1.2
 
 dev_dependencies:
   flutter_test:

@@ -1,16 +1,16 @@
-# Colorize Text Avatar
+# Hashbrowns Text Avatar
 
-Colorize Text Avatar is a package to generate avatar based on your user initials. It supports to generate avatars based on your specification or it colorize your avatar by using predefined colors. Enjoy it!
+Hashbrowns Text Avatar is a package to generate avatar based on your user initials. It supports to generate avatars based on your specification or it Hashbrowns your avatar by using predefined colors. Enjoy it!
 
-![Colorize Text Avatar](https://github.com/deniscolak/colorize-text-avatar/raw/master/example/screenshots/img_4.png)
+![Hashbrowns Text Avatar](https://github.com/acterglobal/hashbrowns-text-avatar/raw/master/example/screenshots/img_4.png)
 
 ## Getting Started 🔥
 
-It is an easy and powerfull package to generate text avatars for your users! 
+It is an easy and powerful package to generate text avatars for your users!
 
 Let's see how to generate an avatar easily!
 
-### Usage of Colorize Text Avatar 😎
+### Usage of Hashbrowns Text Avatar 😎
 
 Here is the only mandatory parameter is text.
 
@@ -20,7 +20,7 @@ TextAvatar(
 )
 ```
 
-![Colorize Text Avatar](https://github.com/deniscolak/colorize-text-avatar/raw/master/example/screenshots/img_1.png)
+![Hashbrowns Text Avatar](https://github.com/acterglobal/hashbrowns-text-avatar/raw/master/example/screenshots/img_1.png)
 
 ### Parameters of Text Avatar 😎
 
@@ -35,11 +35,11 @@ TextAvatar(
 )
 ```
 
-![Colorize Text Avatar](https://github.com/deniscolak/colorize-text-avatar/raw/master/example/screenshots/img_2.png)
+![Hashbrowns Text Avatar](https://github.com/acterglobal/hashbrowns-text-avatar/raw/master/example/screenshots/img_2.png)
 
-numberLetters parameter allows user to generate Avatar more specific number of character. 
+numberLetters parameter allows user to generate Avatar more specific number of character.
 
-> Developer can predefine size and numberLetters, if numberletters is null or not defined the default value is 1.
+> Developer can predefine `size` and `numberLetters`, if `numberLetters` is null or not defined the default value is `1`.
 
 ```dart
 TextAvatar(
@@ -50,8 +50,7 @@ TextAvatar(
 )
 ```
 
-![Colorize Text Avatar](https://github.com/deniscolak/colorize-text-avatar/raw/master/example/screenshots/img_3.png)
-
+![Hashbrowns Text Avatar](https://github.com/acterglobal/hashbrowns-text-avatar/raw/master/example/screenshots/img_3.png)
 
 Other parameters can be change according to your specification.
 
@@ -72,15 +71,10 @@ TextAvatar(
 )
 ```
 
+## Credits & License
 
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](/LICENSE)
 
-## License
+Fork of the great [Colorize Text Avatar](https://pub.dev/packages/colorize_text_avatar) package by [Deniz Çolak](https://github.com/deniscolak).
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
-
-2021 
-
-## Youtube Channel
-
-[![Youtube](https://lh3.googleusercontent.com/a-/AOh14GhCpmeHdwyiGTjusea5wnu1yEQltH5vTADhg1j8Og=s600-k-no-rp-mo)](https://www.youtube.com/channel/UCkTVeaaSuRoypP1hmDRr_Hg)
-
+Any additional work: © 2023 Acter Association, Denmark

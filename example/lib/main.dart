@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:colorize_text_avatar/colorize_text_avatar.dart';
+import 'package:hashbrowns_text_avatar/hashbrowns_text_avatar.dart';
 
 void main() {
   runApp(MyApp());

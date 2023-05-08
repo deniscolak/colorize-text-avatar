@@ -1,6 +1,6 @@
-import 'package:colorize_text_avatar/colorize_text_avatar.dart';
-import 'package:colorize_text_avatar/src/constants/colors.dart';
-import 'package:colorize_text_avatar/src/constants/enums.dart';
+import 'package:hashbrowns_text_avatar/hashbrowns_text_avatar.dart';
+import 'package:hashbrowns_text_avatar/src/constants/colors.dart';
+import 'package:hashbrowns_text_avatar/src/constants/enums.dart';
 import 'package:flutter/material.dart';
 
 class TextAvatar extends StatelessWidget {
@@ -34,7 +34,8 @@ class TextAvatar extends StatelessWidget {
   Widget build(BuildContext context) {
     shape = (shape == null) ? Shape.Rectangle : shape;
     size = (size == null || size! < 32.0) ? 48.0 : size;
-    backgroundColor = backgroundColor == null ? _colorBackgroundConfig() : backgroundColor;
+    backgroundColor =
+        backgroundColor == null ? _colorBackgroundConfig() : backgroundColor;
     textColor = _colorTextConfig();
     return _textDisplay();
   }
