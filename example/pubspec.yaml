@@ -23,7 +23,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  hashbrowns_text_avatar:
+  acter_avatar:
     path: "../"
 
   # The following adds the Cupertino Icons font to your application.

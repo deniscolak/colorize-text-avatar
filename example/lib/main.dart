@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:hashbrowns_text_avatar/hashbrowns_text_avatar.dart';
+import 'package:acter_avatar/acter_avatar.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Auto Colorized Avatar',
+      title: 'Flutter Acter Avatar',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         // This is the theme of your application.
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         brightness: Brightness.dark,
       ),
-      home: MyHomePage(title: 'Flutter Auto Colorized Avatar'),
+      home: MyHomePage(title: 'Flutter Acter Avatar'),
     );
   }
 }
@@ -52,6 +52,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
+    final bold = ColorMaker.bold();
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
@@ -85,7 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'Example Colorized Avatars',
+              'Example Acter Avatars',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
             ),
             SizedBox(
@@ -96,7 +97,6 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextAvatar(
-                  textColor: Colors.white,
                   shape: Shape.Circular,
                   text: "Ali Akalın",
                   numberLetters: 2,
@@ -105,7 +105,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   width: 12,
                 ),
                 TextAvatar(
-                  textColor: Colors.white,
                   shape: Shape.Circular,
                   text: "Bulut Peker",
                   numberLetters: 2,
@@ -114,7 +113,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   width: 12,
                 ),
                 TextAvatar(
-                  textColor: Colors.white,
                   shape: Shape.Circular,
                   text: "Ceylin Oztürk",
                   numberLetters: 2,
@@ -127,7 +125,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   width: 12,
                 ),
                 TextAvatar(
-                  textColor: Colors.white,
                   shape: Shape.Circular,
                   text: "Xantos Salvo",
                   numberLetters: 2,
@@ -136,7 +133,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   width: 12,
                 ),
                 TextAvatar(
-                  textColor: Colors.white,
                   shape: Shape.Circular,
                   text: "Yuval Noah",
                   numberLetters: 2,
@@ -145,7 +141,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   width: 12,
                 ),
                 TextAvatar(
-                  textColor: Colors.white,
                   shape: Shape.Circular,
                   text: "Zoey Gen",
                   numberLetters: 2,
@@ -160,7 +155,6 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextAvatar(
-                  textColor: Colors.white,
                   text: "Ali Akalın",
                   numberLetters: 2,
                 ),
@@ -168,7 +162,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   width: 12,
                 ),
                 TextAvatar(
-                  textColor: Colors.white,
                   text: "Bulut Peker",
                   numberLetters: 2,
                 ),
@@ -176,7 +169,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   width: 12,
                 ),
                 TextAvatar(
-                  textColor: Colors.white,
                   text: "Ceylin Oztürk",
                   numberLetters: 2,
                 ),
@@ -188,7 +180,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   width: 12,
                 ),
                 TextAvatar(
-                  textColor: Colors.white,
                   text: "Xantos Salvo",
                   numberLetters: 2,
                 ),
@@ -196,7 +187,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   width: 12,
                 ),
                 TextAvatar(
-                  textColor: Colors.white,
                   text: "Yuval Noah",
                   numberLetters: 2,
                 ),
@@ -204,7 +194,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   width: 12,
                 ),
                 TextAvatar(
-                  textColor: Colors.white,
                   text: "Zoey Gen",
                   numberLetters: 2,
                 ),
@@ -218,7 +207,6 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextAvatar(
-                  textColor: Colors.white,
                   text: "Ali Akalın",
                   numberLetters: 1,
                 ),
@@ -226,7 +214,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   width: 12,
                 ),
                 TextAvatar(
-                  textColor: Colors.white,
                   text: "Bulut Peker",
                   numberLetters: 1,
                 ),
@@ -234,7 +221,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   width: 12,
                 ),
                 TextAvatar(
-                  textColor: Colors.white,
                   text: "Ceylin Oztürk",
                   numberLetters: 1,
                 ),
@@ -246,7 +232,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   width: 12,
                 ),
                 TextAvatar(
-                  textColor: Colors.white,
                   text: "Xantos Salvo",
                   numberLetters: 1,
                 ),
@@ -254,7 +239,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   width: 12,
                 ),
                 TextAvatar(
-                  textColor: Colors.white,
                   text: "Yuval Noah",
                   numberLetters: 1,
                 ),
@@ -262,8 +246,191 @@ class _MyHomePageState extends State<MyHomePage> {
                   width: 12,
                 ),
                 TextAvatar(
-                  textColor: Colors.white,
                   text: "Zoey Gen",
+                  numberLetters: 1,
+                ),
+              ],
+            ),
+            Text(
+              'bold examples',
+              style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextAvatar(
+                  shape: Shape.Circular,
+                  colorMaker: bold,
+                  text: "Ali Akalın",
+                  numberLetters: 2,
+                ),
+                SizedBox(
+                  width: 12,
+                ),
+                TextAvatar(
+                  shape: Shape.Circular,
+                  colorMaker: bold,
+                  text: "Bulut Peker",
+                  numberLetters: 2,
+                ),
+                SizedBox(
+                  width: 12,
+                ),
+                TextAvatar(
+                  shape: Shape.Circular,
+                  colorMaker: bold,
+                  text: "Ceylin Oztürk",
+                  numberLetters: 2,
+                ),
+                SizedBox(
+                  width: 12,
+                ),
+                Text('.....'),
+                SizedBox(
+                  width: 12,
+                ),
+                TextAvatar(
+                  shape: Shape.Circular,
+                  colorMaker: bold,
+                  text: "Xantos Salvo",
+                  numberLetters: 2,
+                ),
+                SizedBox(
+                  width: 12,
+                ),
+                TextAvatar(
+                  shape: Shape.Circular,
+                  colorMaker: bold,
+                  text: "Yuval Noah",
+                  numberLetters: 2,
+                ),
+                SizedBox(
+                  width: 12,
+                ),
+                TextAvatar(
+                  shape: Shape.Circular,
+                  colorMaker: bold,
+                  text: "Zoey Gen",
+                  numberLetters: 2,
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextAvatar(
+                  text: "Ali Akalın",
+                  colorMaker: bold,
+                  numberLetters: 2,
+                ),
+                SizedBox(
+                  width: 12,
+                ),
+                TextAvatar(
+                  text: "Bulut Peker",
+                  colorMaker: bold,
+                  numberLetters: 2,
+                ),
+                SizedBox(
+                  width: 12,
+                ),
+                TextAvatar(
+                  text: "Ceylin Oztürk",
+                  colorMaker: bold,
+                  numberLetters: 2,
+                ),
+                SizedBox(
+                  width: 12,
+                ),
+                Text('.....'),
+                SizedBox(
+                  width: 12,
+                ),
+                TextAvatar(
+                  text: "Xantos Salvo",
+                  colorMaker: bold,
+                  numberLetters: 2,
+                ),
+                SizedBox(
+                  width: 12,
+                ),
+                TextAvatar(
+                  text: "Yuval Noah",
+                  colorMaker: bold,
+                  numberLetters: 2,
+                ),
+                SizedBox(
+                  width: 12,
+                ),
+                TextAvatar(
+                  text: "Zoey Gen",
+                  colorMaker: bold,
+                  numberLetters: 2,
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextAvatar(
+                  text: "Ali Akalın",
+                  colorMaker: bold,
+                  numberLetters: 1,
+                ),
+                SizedBox(
+                  width: 12,
+                ),
+                TextAvatar(
+                  text: "Bulut Peker",
+                  colorMaker: bold,
+                  numberLetters: 1,
+                ),
+                SizedBox(
+                  width: 12,
+                ),
+                TextAvatar(
+                  text: "Ceylin Oztürk",
+                  colorMaker: bold,
+                  numberLetters: 1,
+                ),
+                SizedBox(
+                  width: 12,
+                ),
+                Text('.....'),
+                SizedBox(
+                  width: 12,
+                ),
+                TextAvatar(
+                  text: "Xantos Salvo",
+                  colorMaker: bold,
+                  numberLetters: 1,
+                ),
+                SizedBox(
+                  width: 12,
+                ),
+                TextAvatar(
+                  text: "Yuval Noah",
+                  colorMaker: bold,
+                  numberLetters: 1,
+                ),
+                SizedBox(
+                  width: 12,
+                ),
+                TextAvatar(
+                  text: "Zoey Gen",
+                  colorMaker: bold,
                   numberLetters: 1,
                 ),
               ],

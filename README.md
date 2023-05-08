@@ -1,8 +1,14 @@
-# Hashbrowns Text Avatar
+# Acter Avatar
 
-Hashbrowns Text Avatar is a package to generate avatar based on your user initials. It supports to generate avatars based on your specification or it Hashbrowns your avatar by using predefined colors. Enjoy it!
+Acter Avatar is a package to generate avatar for the acter platform.
 
-![Hashbrowns Text Avatar](https://github.com/acterglobal/hashbrowns-text-avatar/raw/master/example/screenshots/img_4.png)
+## Progress
+
+- [x] `TextAvatars` based on text with custom color generator
+
+TextAvatar can generate avatars based on any string. It generates the background and foreground color based on your input string and shows the avatar via the text initials. Enjoy it!
+
+![Acter Text Avatar](https://github.com/acterglobal/acter-avatar/raw/master/example/screenshots/img_4.png)
 
 ## Getting Started 🔥
 
@@ -10,7 +16,7 @@ It is an easy and powerful package to generate text avatars for your users!
 
 Let's see how to generate an avatar easily!
 
-### Usage of Hashbrowns Text Avatar 😎
+### Usage of Acter's Text Avatar 😎
 
 Here is the only mandatory parameter is text.
 
@@ -20,7 +26,7 @@ TextAvatar(
 )
 ```
 
-![Hashbrowns Text Avatar](https://github.com/acterglobal/hashbrowns-text-avatar/raw/master/example/screenshots/img_1.png)
+![Acter Text Avatar](https://github.com/acterglobal/acter-avatar/raw/master/example/screenshots/img_1.png)
 
 ### Parameters of Text Avatar 😎
 
@@ -35,7 +41,7 @@ TextAvatar(
 )
 ```
 
-![Hashbrowns Text Avatar](https://github.com/acterglobal/hashbrowns-text-avatar/raw/master/example/screenshots/img_2.png)
+![Acter Text Avatar](https://github.com/acterglobal/acter-avatar/raw/master/example/screenshots/img_2.png)
 
 numberLetters parameter allows user to generate Avatar more specific number of character.
 
@@ -50,24 +56,25 @@ TextAvatar(
 )
 ```
 
-![Hashbrowns Text Avatar](https://github.com/acterglobal/hashbrowns-text-avatar/raw/master/example/screenshots/img_3.png)
+![Acter Text Avatar](https://github.com/acterglobal/acter-avatar/raw/master/example/screenshots/img_3.png)
 
 Other parameters can be change according to your specification.
 
-> Developers can extend the TextAvatar model according to their specification, currently below parameters are supported.
+> Developers can extend the `TextAvatar` model according to their specification, currently below parameters are supported.
 
 ```dart
 TextAvatar(
     shape: Shape.Circular,
     size: 35
-    textColor: Colors.white,
     fontSize: 14,
     fontWeight: FontWeight.w600,
     upperCase: true,
-    backgroundColor: Colors.black,
+    colorMaker: ColorMaker.bold(),
+    colorGenerator: // custom ColorGenerator-function. colorMaker takes precedence
     numberLetters: 1,
 
-    text: this.widget.userdata.fullname,
+    text: this.widget.userdata.displayname,
+    sourceText: this.widget.userdata.username,
 )
 ```
 

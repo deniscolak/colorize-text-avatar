@@ -1,14 +1,14 @@
-import 'package:hashbrowns_text_avatar/hashbrowns_text_avatar.dart';
-import 'package:hashbrowns_text_avatar/src/constants/colors.dart';
-import 'package:hashbrowns_text_avatar/src/constants/enums.dart';
+import 'package:acter_avatar/acter_avatar.dart';
 import 'package:flutter/material.dart';
+
+ColorMaker defaultColorSet = ColorMaker.pastels();
 
 class TextAvatar extends StatelessWidget {
   Shape? shape;
-  Color? backgroundColor;
-  Color? textColor;
+  late ColorMaker colorMaker;
   double? size;
-  final String? text;
+  final String text;
+  final String? sourceText;
   final double? fontSize;
   final int? numberLetters;
   final FontWeight? fontWeight;
@@ -17,44 +17,34 @@ class TextAvatar extends StatelessWidget {
 
   TextAvatar(
       {Key? key,
-      @required this.text,
-      this.textColor,
-      this.backgroundColor,
+      required this.text,
+      this.sourceText,
       this.shape,
+      ColorMaker? colorMaker,
+      ColorGenerator? colorGenerator,
       this.numberLetters,
       this.size,
       this.fontWeight = FontWeight.bold,
       this.fontFamily,
       this.fontSize = 16,
       this.upperCase = false}) {
-    //assert(numberLetters! > 0);
+    if (colorMaker == null) {
+      if (colorGenerator == null) {
+        this.colorMaker = defaultColorSet;
+      } else {
+        this.colorMaker = ColorMaker(colorGenerator);
+      }
+    } else {
+      this.colorMaker = colorMaker;
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     shape = (shape == null) ? Shape.Rectangle : shape;
     size = (size == null || size! < 32.0) ? 48.0 : size;
-    backgroundColor =
-        backgroundColor == null ? _colorBackgroundConfig() : backgroundColor;
-    textColor = _colorTextConfig();
-    return _textDisplay();
-  }
-
-  Color _colorBackgroundConfig() {
-    if (RegExp(r'[A-Z]|').hasMatch(
-      _textConfiguration(),
-    )) {
-      backgroundColor =
-          colorData[_textConfiguration()[0].toLowerCase().toString()];
-    }
-    return backgroundColor!;
-  }
-
-  Color _colorTextConfig() {
-    if (textColor == null)
-      return Colors.white;
-    else
-      return textColor!;
+    final colors = colorMaker.generateColorFromString(sourceText ?? text);
+    return _textDisplay(colors);
   }
 
   String _toString({String? value}) {
@@ -64,22 +54,22 @@ class TextAvatar extends StatelessWidget {
   }
 
   String _textConfiguration() {
-    var newText = text == null ? '?' : _toString(value: text);
+    var newText = _toString(value: text);
     newText = upperCase! ? newText.toUpperCase() : newText;
-    var arrayLeeters = newText.trim().split(' ');
+    var arrayLetters = newText.trim().split(' ');
 
-    if (arrayLeeters.length > 1 && arrayLeeters.length == numberLetters) {
-      return '${arrayLeeters[0][0].trim()}${arrayLeeters[1][0].trim()}';
+    if (arrayLetters.length > 1 && arrayLetters.length == numberLetters) {
+      return '${arrayLetters[0][0].trim()}${arrayLetters[1][0].trim()}';
     }
 
     return '${newText[0]}';
   }
 
-  Widget _buildText() {
+  Widget _buildText(ColorSet colors) {
     return Text(
       _textConfiguration(),
       style: TextStyle(
-        color: textColor,
+        color: colors.onSurfaceColor,
         fontSize: fontSize,
         fontWeight: fontWeight,
         fontFamily: fontFamily,
@@ -110,16 +100,16 @@ class TextAvatar extends StatelessWidget {
     }
   }
 
-  Widget _textDisplay() {
+  Widget _textDisplay(ColorSet colors) {
     return Container(
       child: Material(
         shape: _buildTextType(),
-        color: backgroundColor,
+        color: colors.surfaceColor,
         child: Container(
           height: size,
           width: size,
           child: Center(
-            child: _buildText(),
+            child: _buildText(colors),
           ),
         ),
       ),

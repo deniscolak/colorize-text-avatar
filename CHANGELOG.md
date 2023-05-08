@@ -1,4 +1,4 @@
-## [0.0.1] - 20230508 Forking `TextAvatar` to become `Hashbrowns-Text-Avatar`
+## [0.0.1] - 20230508 Forking `TextAvatar` to become `Acter-Avatar`
 
 ---
 
