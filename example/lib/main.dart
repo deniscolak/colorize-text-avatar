@@ -96,6 +96,184 @@ class _MyHomePageState extends State<MyHomePage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                ActerAvatar(
+                  mode: DisplayMode.User,
+                  displayName: "Ali Akalın",
+                  uniqueId: "Ali Akalın",
+                ),
+                SizedBox(
+                  width: 12,
+                ),
+                ActerAvatar(
+                  mode: DisplayMode.User,
+                  displayName: "Bulut Peker",
+                  uniqueId: "Bulut Peker",
+                ),
+                SizedBox(
+                  width: 12,
+                ),
+                ActerAvatar(
+                  mode: DisplayMode.User,
+                  displayName: "Ceylin Oztürk",
+                  uniqueId: "Ceylin Oztürk",
+                ),
+                SizedBox(
+                  width: 12,
+                ),
+                Text('.....'),
+                SizedBox(
+                  width: 12,
+                ),
+                ActerAvatar(
+                  mode: DisplayMode.User,
+                  displayName: "Xantos Salvo",
+                  uniqueId: "Xantos Salvo",
+                ),
+                SizedBox(
+                  width: 12,
+                ),
+                ActerAvatar(
+                  mode: DisplayMode.User,
+                  displayName: "Yuval Noah",
+                  uniqueId: "Yuval Noah",
+                ),
+                SizedBox(
+                  width: 12,
+                ),
+                ActerAvatar(
+                  mode: DisplayMode.User,
+                  displayName: "Zoey Gen",
+                  uniqueId: "Zoey Gen",
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ActerAvatar(
+                  mode: DisplayMode.Space,
+                  displayName: "Ali Akalın",
+                  uniqueId: "Ali Akalın",
+                ),
+                SizedBox(
+                  width: 12,
+                ),
+                ActerAvatar(
+                  mode: DisplayMode.Space,
+                  displayName: "Bulut Peker",
+                  uniqueId: "Bulut Peker",
+                ),
+                SizedBox(
+                  width: 12,
+                ),
+                ActerAvatar(
+                  mode: DisplayMode.Space,
+                  displayName: "Ceylin Oztürk",
+                  uniqueId: "Ceylin Oztürk",
+                ),
+                SizedBox(
+                  width: 12,
+                ),
+                Text('.....'),
+                SizedBox(
+                  width: 12,
+                ),
+                ActerAvatar(
+                  mode: DisplayMode.Space,
+                  displayName: "Xantos Salvo",
+                  uniqueId: "Xantos Salvo",
+                ),
+                SizedBox(
+                  width: 12,
+                ),
+                ActerAvatar(
+                  mode: DisplayMode.Space,
+                  displayName: "Yuval Noah",
+                  uniqueId: "Yuval Noah",
+                ),
+                SizedBox(
+                  width: 12,
+                ),
+                ActerAvatar(
+                  mode: DisplayMode.Space,
+                  displayName: "Zoey Gen",
+                  uniqueId: "Zoey Gen",
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ActerAvatar(
+                  mode: DisplayMode.Space,
+                  displayName: "Ali Akalın",
+                  uniqueId: "Ali Akalın",
+                ),
+                SizedBox(
+                  width: 12,
+                ),
+                ActerAvatar(
+                  mode: DisplayMode.Space,
+                  displayName: "Bulut Peker",
+                  uniqueId: "Bulut Peker",
+                ),
+                SizedBox(
+                  width: 12,
+                ),
+                ActerAvatar(
+                  mode: DisplayMode.Space,
+                  displayName: "Ceylin Oztürk",
+                  uniqueId: "Ceylin Oztürk",
+                ),
+                SizedBox(
+                  width: 12,
+                ),
+                Text('.....'),
+                SizedBox(
+                  width: 12,
+                ),
+                ActerAvatar(
+                  mode: DisplayMode.Space,
+                  displayName: "Xantos Salvo",
+                  uniqueId: "Xantos Salvo",
+                ),
+                SizedBox(
+                  width: 12,
+                ),
+                ActerAvatar(
+                  mode: DisplayMode.Space,
+                  displayName: "Yuval Noah",
+                  uniqueId: "Yuval Noah",
+                ),
+                SizedBox(
+                  width: 12,
+                ),
+                ActerAvatar(
+                  mode: DisplayMode.Space,
+                  displayName: "Zoey Gen",
+                  uniqueId: "Zoey Gen",
+                ),
+              ],
+            ),
+            Text(
+              'Example Acter Text Avatars',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
                 TextAvatar(
                   shape: Shape.Circular,
                   text: "Ali Akalın",
