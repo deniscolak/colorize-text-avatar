@@ -5,6 +5,17 @@ Acter Avatar is a package to generate avatar for the acter platform.
 ## Progress
 
 - [x] `TextAvatars` based on text with custom color generator
+- [ ] Generic `ActerAvatar` with:
+  - [ ] automatic selection of shape & mode
+  - [ ] image loader
+  - [ ] optional border-support (with optional coloring support)
+  - [ ] [multiavatar](https://pub.dev/packages/multiavatar) fallback support
+- [ ] Generic `ActerAvatarPill` for inline displaying with:
+  - [ ] internal `ActerAvatar`, click-action
+
+---
+
+## Components:
 
 TextAvatar can generate avatars based on any string. It generates the background and foreground color based on your input string and shows the avatar via the text initials. Enjoy it!
 
