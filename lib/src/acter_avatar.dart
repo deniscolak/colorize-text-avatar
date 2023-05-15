@@ -104,7 +104,7 @@ class _ActerAvatar extends State<ActerAvatar> {
         // User fallback mode
         return MultiAvatar(
           uniqueId: widget.uniqueId,
-          size: widget.size,
+          size: widget.size! * 2,
         );
       case DisplayMode.Space:
         return TextAvatar(
