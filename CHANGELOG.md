@@ -5,6 +5,8 @@
 - MultiUser fallback support
 - loading of actual image in `ActerAvatar`
 - improved support for image loading in `ActerAvatar`
+- additional UniqueName support for canonical alias
+- minor fixes around refreshing and setState after dispose
 
 ## [0.0.1] - 20230508 Forking `TextAvatar` to become `Acter-Avatar`
 
