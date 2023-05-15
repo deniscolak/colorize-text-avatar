@@ -70,12 +70,15 @@ class ActerAvatar extends StatelessWidget {
         return Container(
           height: size,
           width: size,
-          child: Material(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(6.0),
-            ),
-            child: Image(
-              image: avatar,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(6.0),
+            image: DecorationImage(
+              fit: BoxFit.cover,
+              image: ResizeImage(
+                avatar,
+                width: size!.toInt(),
+                height: size!.toInt(),
+              ),
             ),
           ),
         );
