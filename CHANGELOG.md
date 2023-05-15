@@ -1,3 +1,11 @@
+## Unreleased
+
+- new `ActerAvatar` wrapper widget
+- `DisplayMode` added
+- MultiUser fallback support
+- loading of actual image in `ActerAvatar`
+- improved support for image loading in `ActerAvatar`
+
 ## [0.0.1] - 20230508 Forking `TextAvatar` to become `Acter-Avatar`
 
 ---
