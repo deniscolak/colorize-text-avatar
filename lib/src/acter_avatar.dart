@@ -1,12 +1,14 @@
 import 'package:acter_avatar/acter_avatar.dart';
 import 'package:flutter/material.dart';
 
+/// ActerAvatar allows you to display the different types of Avatars in the
+/// acter.global app.
 class ActerAvatar extends StatefulWidget {
   final DisplayMode mode;
   final double? size;
   final String? displayName;
   final String uniqueId;
-  final bool showTooltip;
+  final TooltipStyle tooltip;
   final ImageProvider<Object>? avatar;
   final Future<ImageProvider<Object>?>? avatarProviderFuture;
 
@@ -15,7 +17,7 @@ class ActerAvatar extends StatefulWidget {
       this.displayName,
       required this.uniqueId,
       required this.mode,
-      this.showTooltip = true,
+      this.tooltip = TooltipStyle.Combined,
       this.avatar,
       this.avatarProviderFuture,
       this.size})
@@ -51,12 +53,22 @@ class _ActerAvatar extends State<ActerAvatar> {
 
   @override
   Widget build(BuildContext context) {
-    if (widget.showTooltip) {
-      return Tooltip(
-          message: widget.displayName ?? widget.uniqueId,
-          child: inner(context));
+    final child = inner(context);
+    switch (widget.tooltip) {
+      case TooltipStyle.DisplayName:
+        return Tooltip(
+            message: widget.displayName ?? widget.uniqueId, child: child);
+      case TooltipStyle.UniqueId:
+        return Tooltip(message: widget.uniqueId, child: child);
+      case TooltipStyle.Combined:
+        var message = widget.uniqueId;
+        if (widget.displayName != null) {
+          message = '${widget.displayName} (${widget.uniqueId})';
+        }
+        return Tooltip(message: message, child: child);
+      case TooltipStyle.None:
+        return child;
     }
-    return inner(context);
   }
 
   Widget inner(BuildContext context) {
