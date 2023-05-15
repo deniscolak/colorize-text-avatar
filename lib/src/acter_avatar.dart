@@ -63,7 +63,7 @@ class ActerAvatar extends StatelessWidget {
         // User fallback mode
         return CircleAvatar(
           foregroundImage: avatar,
-          radius: (size! / 2.0),
+          radius: size,
         );
       case DisplayMode.Space:
       case DisplayMode.GroupChat:

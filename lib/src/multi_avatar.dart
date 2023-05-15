@@ -14,7 +14,7 @@ class MultiAvatar extends StatelessWidget {
   Widget build(BuildContext context) {
     String avatar = multiavatar(this.uniqueId);
     final svg = SvgPicture.string(avatar);
-    final actual_size = (size == null || size! < 32.0) ? 48.0 : size;
+    final actual_size = (size == null || size! < 16.0) ? 16.0 : size;
     return SizedBox(
       height: actual_size,
       width: actual_size,
