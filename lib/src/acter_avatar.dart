@@ -3,6 +3,11 @@ import 'package:flutter/material.dart';
 
 /// ActerAvatar allows you to display the different types of Avatars in the
 /// acter.global app.
+///
+/// If no avatar is found, the widget renders the fallback according to the
+/// configured `DisplayMode`. If an avatar is found, that is being shown. Any
+/// image resizing (for memory purposes) has to be done beforehand, the image
+/// is shown as given.
 class ActerAvatar extends StatefulWidget {
   /// Set the display mode for this Avatar
   final DisplayMode mode;
@@ -120,11 +125,7 @@ class _ActerAvatar extends State<ActerAvatar> {
             borderRadius: BorderRadius.circular(6.0),
             image: DecorationImage(
               fit: BoxFit.cover,
-              image: ResizeImage(
-                avatar,
-                width: widget.size!.toInt(),
-                height: widget.size!.toInt(),
-              ),
+              image: avatar,
             ),
           ),
         );
