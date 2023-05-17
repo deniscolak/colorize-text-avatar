@@ -54,29 +54,34 @@ class ActerAvatar extends StatefulWidget {
 class _ActerAvatar extends State<ActerAvatar> {
   ImageProvider<Object>? _avatar;
 
+  @override
+  void initState() {
+    super.initState();
+    setAvatar();
+  }
+
   // avoid re-run future when object state isn't changed.
   @override
   void didUpdateWidget(ActerAvatar oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.avatar != widget.avatar) {
-      setAvatar();
+      if (mounted) {
+        setAvatar();
+      }
     }
   }
 
   void setAvatar() async {
     if (widget.avatar != null) {
-      if (mounted) {
-        setState(() {
-          _avatar = widget.avatar;
-        });
-      }
+      setState(() {
+        _avatar = widget.avatar;
+      });
     } else if (widget.avatarProviderFuture != null) {
       final avatar = await widget.avatarProviderFuture;
-      if (mounted) {
-        setState(() {
-          _avatar = avatar;
-        });
-      }
+
+      setState(() {
+        _avatar = avatar;
+      });
     }
   }
 
@@ -116,13 +121,13 @@ class _ActerAvatar extends State<ActerAvatar> {
         // User fallback mode
         return CircleAvatar(
           foregroundImage: avatar,
-          radius: widget.size,
+          radius: widget.size ?? 24,
         );
       case DisplayMode.Space:
       case DisplayMode.GroupChat:
         return Container(
-          height: widget.size,
-          width: widget.size,
+          height: widget.size ?? 24,
+          width: widget.size ?? 24,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(6.0),
             image: DecorationImage(

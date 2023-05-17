@@ -1,3 +1,4 @@
+import 'package:example/constants/keys.dart';
 import 'package:flutter/material.dart';
 
 import 'package:acter_avatar/acter_avatar.dart';
@@ -83,535 +84,274 @@ class _MyHomePageState extends State<MyHomePage> {
           // center the children vertically; the main axis here is the vertical
           // axis because Columns are vertical (the cross axis would be
           // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
+            const SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.all(5),
+              child: Text(
+                'Example Acter Avatars',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
             Text(
-              'Example Acter Avatars',
+              'Avatar with size specified',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  ActerAvatar(
+                    key: TestKeys.widgetKey,
+                    mode: DisplayMode.User,
+                    displayName: "Ali Akalın",
+                    uniqueId: "Ali Akalın",
+                    size: 36,
+                  ),
+                  SizedBox(
+                    width: 12,
+                  ),
+                  ActerAvatar(
+                    mode: DisplayMode.User,
+                    displayName: "Bulut Peker",
+                    uniqueId: "Bulut Peker",
+                    size: 36,
+                  ),
+                  SizedBox(
+                    width: 12,
+                  ),
+                  ActerAvatar(
+                    mode: DisplayMode.User,
+                    displayName: "Ceylin Oztürk",
+                    uniqueId: "Ceylin Oztürk",
+                    size: 36,
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 20),
+            Text(
+              'Avatar with default size',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ActerAvatar(
+                    mode: DisplayMode.User,
+                    displayName: "Xantos Salvo",
+                    uniqueId: "Xantos Salvo",
+                  ),
+                  SizedBox(
+                    width: 12,
+                  ),
+                  ActerAvatar(
+                    mode: DisplayMode.User,
+                    displayName: "Yuval Noah",
+                    uniqueId: "Yuval Noah",
+                  ),
+                  SizedBox(
+                    width: 12,
+                  ),
+                  ActerAvatar(
+                    mode: DisplayMode.User,
+                    displayName: "Zoey Gen",
+                    uniqueId: "Zoey Gen",
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Text(
+              'Rectangular Acter Avatars ',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+            ),
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 5.0, vertical: 8.0),
+              child: Column(
+                children: <Widget>[
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ActerAvatar(
+                        mode: DisplayMode.Space,
+                        displayName: "Ali Akalın",
+                        uniqueId: "Ali Akalın",
+                      ),
+                      SizedBox(
+                        width: 12,
+                      ),
+                      ActerAvatar(
+                        mode: DisplayMode.Space,
+                        displayName: "Bulut Peker",
+                        uniqueId: "Bulut Peker",
+                      ),
+                      SizedBox(
+                        width: 12,
+                      ),
+                      ActerAvatar(
+                        mode: DisplayMode.Space,
+                        displayName: "Ceylin Oztürk",
+                        uniqueId: "Ceylin Oztürk",
+                      ),
+                      SizedBox(
+                        width: 12,
+                      ),
+                      Text('.....'),
+                      SizedBox(
+                        width: 12,
+                      ),
+                      ActerAvatar(
+                        mode: DisplayMode.Space,
+                        displayName: "OceanKan",
+                        uniqueId: "OceanKan",
+                        avatar: AssetImage('assets/images/oceankan.png'),
+                        size: 46,
+                      ),
+                      SizedBox(
+                        width: 12,
+                      ),
+                      ActerAvatar(
+                        mode: DisplayMode.Space,
+                        displayName: "Denmark",
+                        uniqueId: "Denmark",
+                        avatar: AssetImage('assets/images/denmark.png'),
+                        size: 46,
+                      ),
+                      SizedBox(
+                        width: 12,
+                      ),
+                      ActerAvatar(
+                        mode: DisplayMode.Space,
+                        displayName: "Amnesty",
+                        uniqueId: "Amnesty",
+                        avatar: AssetImage('assets/images/amnesty.png'),
+                        size: 46,
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Text('Fallback',
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.w400)),
+                        const SizedBox(width: 145),
+                        Text('Avatar',
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.w400)),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Text(
+              'Circular Acter Avatars',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
             ),
             SizedBox(
               height: 20,
             ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ActerAvatar(
-                  mode: DisplayMode.User,
-                  displayName: "Ali Akalın",
-                  uniqueId: "Ali Akalın",
+            Column(
+              children: <Widget>[
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ActerAvatar(
+                      mode: DisplayMode.User,
+                      uniqueId: "Xantos Salvo",
+                      displayName: 'Xantos Salvo',
+                      size: 48,
+                    ),
+                    SizedBox(
+                      width: 12,
+                    ),
+                    ActerAvatar(
+                      mode: DisplayMode.User,
+                      uniqueId: "Yuval Noah",
+                      displayName: "Yuval Noah",
+                      size: 48,
+                    ),
+                    SizedBox(
+                      width: 12,
+                    ),
+                    ActerAvatar(
+                      mode: DisplayMode.User,
+                      uniqueId: "Zoey Gen",
+                      displayName: 'Zoey Gen',
+                      size: 48,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text('.....'),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    ActerAvatar(
+                      uniqueId: 'Denmark',
+                      displayName: "",
+                      mode: DisplayMode.User,
+                      avatar: AssetImage('assets/images/denmark.png'),
+                      size: 26,
+                    ),
+                    SizedBox(
+                      width: 12,
+                    ),
+                    ActerAvatar(
+                      uniqueId: 'Ocean Kan',
+                      mode: DisplayMode.User,
+                      displayName: "Bulut Peker",
+                      avatar: AssetImage('assets/images/oceankan.png'),
+                      size: 26,
+                    ),
+                    SizedBox(
+                      width: 12,
+                    ),
+                    ActerAvatar(
+                      uniqueId: 'Ceylin Oztürk',
+                      mode: DisplayMode.User,
+                      displayName: "Ceylin Oztürk",
+                      avatar: AssetImage('assets/images/tortoga.jpg'),
+                      size: 26,
+                    ),
+                  ],
                 ),
-                SizedBox(
-                  width: 12,
-                ),
-                ActerAvatar(
-                  mode: DisplayMode.User,
-                  displayName: "Bulut Peker",
-                  uniqueId: "Bulut Peker",
-                ),
-                SizedBox(
-                  width: 12,
-                ),
-                ActerAvatar(
-                  mode: DisplayMode.User,
-                  displayName: "Ceylin Oztürk",
-                  uniqueId: "Ceylin Oztürk",
-                ),
-                SizedBox(
-                  width: 12,
-                ),
-                Text('.....'),
-                SizedBox(
-                  width: 12,
-                ),
-                ActerAvatar(
-                  mode: DisplayMode.User,
-                  displayName: "Xantos Salvo",
-                  uniqueId: "Xantos Salvo",
-                ),
-                SizedBox(
-                  width: 12,
-                ),
-                ActerAvatar(
-                  mode: DisplayMode.User,
-                  displayName: "Yuval Noah",
-                  uniqueId: "Yuval Noah",
-                ),
-                SizedBox(
-                  width: 12,
-                ),
-                ActerAvatar(
-                  mode: DisplayMode.User,
-                  displayName: "Zoey Gen",
-                  uniqueId: "Zoey Gen",
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ActerAvatar(
-                  mode: DisplayMode.Space,
-                  displayName: "Ali Akalın",
-                  uniqueId: "Ali Akalın",
-                ),
-                SizedBox(
-                  width: 12,
-                ),
-                ActerAvatar(
-                  mode: DisplayMode.Space,
-                  displayName: "Bulut Peker",
-                  uniqueId: "Bulut Peker",
-                ),
-                SizedBox(
-                  width: 12,
-                ),
-                ActerAvatar(
-                  mode: DisplayMode.Space,
-                  displayName: "Ceylin Oztürk",
-                  uniqueId: "Ceylin Oztürk",
-                ),
-                SizedBox(
-                  width: 12,
-                ),
-                Text('.....'),
-                SizedBox(
-                  width: 12,
-                ),
-                ActerAvatar(
-                  mode: DisplayMode.Space,
-                  displayName: "Xantos Salvo",
-                  uniqueId: "Xantos Salvo",
-                ),
-                SizedBox(
-                  width: 12,
-                ),
-                ActerAvatar(
-                  mode: DisplayMode.Space,
-                  displayName: "Yuval Noah",
-                  uniqueId: "Yuval Noah",
-                ),
-                SizedBox(
-                  width: 12,
-                ),
-                ActerAvatar(
-                  mode: DisplayMode.Space,
-                  displayName: "Zoey Gen",
-                  uniqueId: "Zoey Gen",
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      Text('Fallback',
+                          style: TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.w400)),
+                      const SizedBox(width: 145),
+                      Text('Avatar',
+                          style: TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.w400)),
+                    ],
+                  ),
                 ),
               ],
             ),
             SizedBox(
               height: 20,
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ActerAvatar(
-                  mode: DisplayMode.Space,
-                  displayName: "Ali Akalın",
-                  uniqueId: "Ali Akalın",
-                ),
-                SizedBox(
-                  width: 12,
-                ),
-                ActerAvatar(
-                  mode: DisplayMode.Space,
-                  displayName: "Bulut Peker",
-                  uniqueId: "Bulut Peker",
-                ),
-                SizedBox(
-                  width: 12,
-                ),
-                ActerAvatar(
-                  mode: DisplayMode.Space,
-                  displayName: "Ceylin Oztürk",
-                  uniqueId: "Ceylin Oztürk",
-                ),
-                SizedBox(
-                  width: 12,
-                ),
-                Text('.....'),
-                SizedBox(
-                  width: 12,
-                ),
-                ActerAvatar(
-                  mode: DisplayMode.Space,
-                  displayName: "Xantos Salvo",
-                  uniqueId: "Xantos Salvo",
-                ),
-                SizedBox(
-                  width: 12,
-                ),
-                ActerAvatar(
-                  mode: DisplayMode.Space,
-                  displayName: "Yuval Noah",
-                  uniqueId: "Yuval Noah",
-                ),
-                SizedBox(
-                  width: 12,
-                ),
-                ActerAvatar(
-                  mode: DisplayMode.Space,
-                  displayName: "Zoey Gen",
-                  uniqueId: "Zoey Gen",
-                ),
-              ],
-            ),
-            Text(
-              'Example Acter Text Avatars',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                TextAvatar(
-                  shape: Shape.Circular,
-                  text: "Ali Akalın",
-                  numberLetters: 2,
-                ),
-                SizedBox(
-                  width: 12,
-                ),
-                TextAvatar(
-                  shape: Shape.Circular,
-                  text: "Bulut Peker",
-                  numberLetters: 2,
-                ),
-                SizedBox(
-                  width: 12,
-                ),
-                TextAvatar(
-                  shape: Shape.Circular,
-                  text: "Ceylin Oztürk",
-                  numberLetters: 2,
-                ),
-                SizedBox(
-                  width: 12,
-                ),
-                Text('.....'),
-                SizedBox(
-                  width: 12,
-                ),
-                TextAvatar(
-                  shape: Shape.Circular,
-                  text: "Xantos Salvo",
-                  numberLetters: 2,
-                ),
-                SizedBox(
-                  width: 12,
-                ),
-                TextAvatar(
-                  shape: Shape.Circular,
-                  text: "Yuval Noah",
-                  numberLetters: 2,
-                ),
-                SizedBox(
-                  width: 12,
-                ),
-                TextAvatar(
-                  shape: Shape.Circular,
-                  text: "Zoey Gen",
-                  numberLetters: 2,
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                TextAvatar(
-                  text: "Ali Akalın",
-                  numberLetters: 2,
-                ),
-                SizedBox(
-                  width: 12,
-                ),
-                TextAvatar(
-                  text: "Bulut Peker",
-                  numberLetters: 2,
-                ),
-                SizedBox(
-                  width: 12,
-                ),
-                TextAvatar(
-                  text: "Ceylin Oztürk",
-                  numberLetters: 2,
-                ),
-                SizedBox(
-                  width: 12,
-                ),
-                Text('.....'),
-                SizedBox(
-                  width: 12,
-                ),
-                TextAvatar(
-                  text: "Xantos Salvo",
-                  numberLetters: 2,
-                ),
-                SizedBox(
-                  width: 12,
-                ),
-                TextAvatar(
-                  text: "Yuval Noah",
-                  numberLetters: 2,
-                ),
-                SizedBox(
-                  width: 12,
-                ),
-                TextAvatar(
-                  text: "Zoey Gen",
-                  numberLetters: 2,
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                TextAvatar(
-                  text: "Ali Akalın",
-                  numberLetters: 1,
-                ),
-                SizedBox(
-                  width: 12,
-                ),
-                TextAvatar(
-                  text: "Bulut Peker",
-                  numberLetters: 1,
-                ),
-                SizedBox(
-                  width: 12,
-                ),
-                TextAvatar(
-                  text: "Ceylin Oztürk",
-                  numberLetters: 1,
-                ),
-                SizedBox(
-                  width: 12,
-                ),
-                Text('.....'),
-                SizedBox(
-                  width: 12,
-                ),
-                TextAvatar(
-                  text: "Xantos Salvo",
-                  numberLetters: 1,
-                ),
-                SizedBox(
-                  width: 12,
-                ),
-                TextAvatar(
-                  text: "Yuval Noah",
-                  numberLetters: 1,
-                ),
-                SizedBox(
-                  width: 12,
-                ),
-                TextAvatar(
-                  text: "Zoey Gen",
-                  numberLetters: 1,
-                ),
-              ],
-            ),
-            Text(
-              'bold examples',
-              style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                TextAvatar(
-                  shape: Shape.Circular,
-                  colorMaker: bold,
-                  text: "Ali Akalın",
-                  numberLetters: 2,
-                ),
-                SizedBox(
-                  width: 12,
-                ),
-                TextAvatar(
-                  shape: Shape.Circular,
-                  colorMaker: bold,
-                  text: "Bulut Peker",
-                  numberLetters: 2,
-                ),
-                SizedBox(
-                  width: 12,
-                ),
-                TextAvatar(
-                  shape: Shape.Circular,
-                  colorMaker: bold,
-                  text: "Ceylin Oztürk",
-                  numberLetters: 2,
-                ),
-                SizedBox(
-                  width: 12,
-                ),
-                Text('.....'),
-                SizedBox(
-                  width: 12,
-                ),
-                TextAvatar(
-                  shape: Shape.Circular,
-                  colorMaker: bold,
-                  text: "Xantos Salvo",
-                  numberLetters: 2,
-                ),
-                SizedBox(
-                  width: 12,
-                ),
-                TextAvatar(
-                  shape: Shape.Circular,
-                  colorMaker: bold,
-                  text: "Yuval Noah",
-                  numberLetters: 2,
-                ),
-                SizedBox(
-                  width: 12,
-                ),
-                TextAvatar(
-                  shape: Shape.Circular,
-                  colorMaker: bold,
-                  text: "Zoey Gen",
-                  numberLetters: 2,
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                TextAvatar(
-                  text: "Ali Akalın",
-                  colorMaker: bold,
-                  numberLetters: 2,
-                ),
-                SizedBox(
-                  width: 12,
-                ),
-                TextAvatar(
-                  text: "Bulut Peker",
-                  colorMaker: bold,
-                  numberLetters: 2,
-                ),
-                SizedBox(
-                  width: 12,
-                ),
-                TextAvatar(
-                  text: "Ceylin Oztürk",
-                  colorMaker: bold,
-                  numberLetters: 2,
-                ),
-                SizedBox(
-                  width: 12,
-                ),
-                Text('.....'),
-                SizedBox(
-                  width: 12,
-                ),
-                TextAvatar(
-                  text: "Xantos Salvo",
-                  colorMaker: bold,
-                  numberLetters: 2,
-                ),
-                SizedBox(
-                  width: 12,
-                ),
-                TextAvatar(
-                  text: "Yuval Noah",
-                  colorMaker: bold,
-                  numberLetters: 2,
-                ),
-                SizedBox(
-                  width: 12,
-                ),
-                TextAvatar(
-                  text: "Zoey Gen",
-                  colorMaker: bold,
-                  numberLetters: 2,
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                TextAvatar(
-                  text: "Ali Akalın",
-                  colorMaker: bold,
-                  numberLetters: 1,
-                ),
-                SizedBox(
-                  width: 12,
-                ),
-                TextAvatar(
-                  text: "Bulut Peker",
-                  colorMaker: bold,
-                  numberLetters: 1,
-                ),
-                SizedBox(
-                  width: 12,
-                ),
-                TextAvatar(
-                  text: "Ceylin Oztürk",
-                  colorMaker: bold,
-                  numberLetters: 1,
-                ),
-                SizedBox(
-                  width: 12,
-                ),
-                Text('.....'),
-                SizedBox(
-                  width: 12,
-                ),
-                TextAvatar(
-                  text: "Xantos Salvo",
-                  colorMaker: bold,
-                  numberLetters: 1,
-                ),
-                SizedBox(
-                  width: 12,
-                ),
-                TextAvatar(
-                  text: "Yuval Noah",
-                  colorMaker: bold,
-                  numberLetters: 1,
-                ),
-                SizedBox(
-                  width: 12,
-                ),
-                TextAvatar(
-                  text: "Zoey Gen",
-                  colorMaker: bold,
-                  numberLetters: 1,
-                ),
-              ],
             ),
           ],
         ),
