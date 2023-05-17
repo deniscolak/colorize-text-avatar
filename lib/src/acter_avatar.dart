@@ -56,9 +56,11 @@ class _ActerAvatar extends State<ActerAvatar> {
 
   // avoid re-run future when object state isn't changed.
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    setAvatar();
+  void didUpdateWidget(ActerAvatar oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.avatar != widget.avatar) {
+      setAvatar();
+    }
   }
 
   void setAvatar() async {
