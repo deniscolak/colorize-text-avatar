@@ -44,10 +44,12 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
-    - assets/images/denmark.png
-    - assets/images/amnesty.png
-    - assets/images/oceankan.png
-    - assets/images/tortoga.jpg
+    - assets/images/avatar-1.jpg
+    - assets/images/avatar-2.jpg
+    - assets/images/avatar-3.jpg
+    - assets/images/space-1.jpg
+    - assets/images/space-2.jpg
+    - assets/images/space-3.jpg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
