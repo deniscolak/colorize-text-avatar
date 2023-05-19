@@ -64,7 +64,7 @@ class _ActerAvatar extends State<ActerAvatar> {
   @override
   void didUpdateWidget(ActerAvatar oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.avatar != widget.avatar) {
+    if (oldWidget != widget) {
       if (mounted) {
         setAvatar();
       }
