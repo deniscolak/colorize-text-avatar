@@ -65,23 +65,24 @@ class _ActerAvatar extends State<ActerAvatar> {
   void didUpdateWidget(ActerAvatar oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget != widget) {
-      if (mounted) {
-        setAvatar();
-      }
+      setAvatar();
     }
   }
 
   void setAvatar() async {
     if (widget.avatar != null) {
-      setState(() {
-        _avatar = widget.avatar;
-      });
+      if (mounted) {
+        setState(() {
+          _avatar = widget.avatar;
+        });
+      }
     } else if (widget.avatarProviderFuture != null) {
       final avatar = await widget.avatarProviderFuture;
-
-      setState(() {
-        _avatar = avatar;
-      });
+      if (mounted) {
+        setState(() {
+          _avatar = avatar;
+        });
+      }
     }
   }
 
