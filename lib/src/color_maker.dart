@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:math';
 
 // inspired by [Spencer Stolworthy's](https://github.com/sdstolworthy)
 // [hashbrown](https://github.com/getformative/ColorMaker)
