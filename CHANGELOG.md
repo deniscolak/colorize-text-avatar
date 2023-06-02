@@ -1,5 +1,12 @@
 ## Unreleased
 
+### [0.0.7]
+
+- add logging support
+- error handling for avatar loading: show log.warning and go to fallback
+
+### [0.0.6]
+
 - new `ActerAvatar` wrapper widget
 - `DisplayMode` added
 - MultiUser fallback support

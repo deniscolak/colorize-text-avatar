@@ -1,6 +1,6 @@
 name: acter_avatar
 description: Avatars as used by Acter.global
-version: 0.0.6
+version: 0.0.7
 homepage: https://github.com/acterglobal/acter-avatar
 
 environment:
@@ -12,6 +12,7 @@ dependencies:
     sdk: flutter
   flutter_svg: ">=1.0.5"
   multiavatar: ^0.1.5
+  logging: ^1.2.0
 
 dev_dependencies:
   flutter_test:

@@ -1,5 +1,8 @@
 import 'package:acter_avatar/acter_avatar.dart';
 import 'package:flutter/material.dart';
+import 'package:logging/logging.dart';
+
+final log = Logger('ActerAvatar');
 
 /// ActerAvatar allows you to display the different types of Avatars in the
 /// acter.global app.
@@ -114,6 +117,17 @@ class _ActerAvatar extends State<ActerAvatar> {
     }
   }
 
+  void avatarError(Object error, StackTrace? stackTrace) {
+    log.warning(
+      'Error loading avatar for ${widget.uniqueId}. Returning to fallback.',
+      error,
+      stackTrace,
+    );
+    setState(() {
+      _avatar = null;
+    });
+  }
+
   Widget renderWithAvatar(BuildContext context, ImageProvider avatar) {
     /// Fallback
     switch (widget.mode) {
@@ -122,6 +136,7 @@ class _ActerAvatar extends State<ActerAvatar> {
         // User fallback mode
         return CircleAvatar(
           foregroundImage: avatar,
+          onForegroundImageError: avatarError,
           radius: widget.size ?? 24,
         );
       case DisplayMode.Space:
@@ -134,6 +149,7 @@ class _ActerAvatar extends State<ActerAvatar> {
             image: DecorationImage(
               fit: BoxFit.cover,
               image: avatar,
+              onError: avatarError,
             ),
           ),
         );
