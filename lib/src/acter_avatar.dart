@@ -124,6 +124,7 @@ class _ActerAvatar extends State<ActerAvatar> {
     );
     setState(() {
       _avatar = null;
+      _imgSuccess = false;
     });
   }
 
