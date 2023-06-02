@@ -1,7 +1,10 @@
+import 'dart:typed_data';
+
 import 'package:example/constants/keys.dart';
 import 'package:flutter/material.dart';
 
 import 'package:acter_avatar/acter_avatar.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(MyApp());
@@ -51,6 +54,24 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  late Future<ImageProvider<Object>> getFutureImage;
+
+  @override
+  void initState() {
+    super.initState();
+    getFutureImage = getImage();
+  }
+
+  // An example of loading future image with bytes.
+  Future<ImageProvider<Object>> getImage() async {
+    late var bytes;
+    await Future.delayed(Duration(seconds: 3), () async {
+      ByteData imageData = await rootBundle.load('assets/images/avatar-1.jpg');
+      bytes = imageData.buffer.asUint8List();
+    });
+    return MemoryImage(bytes);
+  }
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -59,6 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
+
     return Scaffold(
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
@@ -110,7 +132,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     mode: DisplayMode.User,
                     displayName: "Ali Akalın",
                     uniqueId: "Ali Akalın",
-                    avatar: AssetImage('assets/images/avatar-1.jpg'),
+                    // avatar: AssetImage('assets/images/avatar-1.jpg'),
+                    imageProviderFuture: getFutureImage,
                     size: 36,
                   ),
                   SizedBox(

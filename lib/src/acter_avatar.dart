@@ -36,7 +36,7 @@ class ActerAvatar extends StatefulWidget {
   final ImageProvider<Object>? avatar;
 
   /// Or alternatively a future that loads the avatar (show fallback until loaded)
-  final Future<ImageProvider<Object>?>? avatarProviderFuture;
+  final Future<ImageProvider<Object>>? imageProviderFuture;
 
   ActerAvatar(
       {Key? key,
@@ -46,7 +46,7 @@ class ActerAvatar extends StatefulWidget {
       required this.mode,
       this.tooltip = TooltipStyle.Combined,
       this.avatar,
-      this.avatarProviderFuture,
+      this.imageProviderFuture,
       this.size})
       : super(key: key ?? Key('avatar-$uniqueId-$size'));
 
@@ -55,38 +55,35 @@ class ActerAvatar extends StatefulWidget {
 }
 
 class _ActerAvatar extends State<ActerAvatar> {
+  bool _imgSuccess = false;
   ImageProvider<Object>? _avatar;
-
   @override
   void initState() {
     super.initState();
-    setAvatar();
-  }
-
-  // avoid re-run future when object state isn't changed.
-  @override
-  void didUpdateWidget(ActerAvatar oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (oldWidget != widget) {
-      setAvatar();
-    }
-  }
-
-  void setAvatar() async {
+    ImageStreamListener listener =
+        ImageStreamListener(_setImage, onError: _setError);
     if (widget.avatar != null) {
-      if (mounted) {
-        setState(() {
-          _avatar = widget.avatar;
-        });
-      }
-    } else if (widget.avatarProviderFuture != null) {
-      final avatar = await widget.avatarProviderFuture;
-      if (mounted) {
-        setState(() {
-          _avatar = avatar;
-        });
-      }
+      widget.avatar!.resolve(ImageConfiguration()).addListener(listener);
+    } else if (widget.imageProviderFuture != null) {
+      _fetchImageProvider(listener);
     }
+  }
+
+  void _fetchImageProvider(ImageStreamListener listener) async {
+    var res = await widget.imageProviderFuture!;
+    res.resolve(ImageConfiguration()).addListener(listener);
+    setState(() {
+      _avatar = res;
+    });
+  }
+
+  void _setImage(ImageInfo image, bool sync) {
+    setState(() => _imgSuccess = true);
+  }
+
+  void _setError(Object obj, StackTrace? st) {
+    setState(() => _imgSuccess = false);
+    dispose();
   }
 
   @override
@@ -110,7 +107,9 @@ class _ActerAvatar extends State<ActerAvatar> {
   }
 
   Widget inner(BuildContext context) {
-    if (_avatar != null) {
+    if (widget.avatar != null && _imgSuccess == true) {
+      return renderWithAvatar(context, widget.avatar!);
+    } else if (_avatar != null && _imgSuccess == true) {
       return renderWithAvatar(context, _avatar!);
     } else {
       return renderFallback(context);
@@ -125,6 +124,7 @@ class _ActerAvatar extends State<ActerAvatar> {
     );
     setState(() {
       _avatar = null;
+      _imgSuccess = false;
     });
   }
 
