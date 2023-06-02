@@ -1,6 +1,6 @@
 name: acter_avatar
 description: Avatars as used by Acter.global
-version: 0.0.7
+version: 0.0.8
 homepage: https://github.com/acterglobal/acter-avatar
 
 environment:
