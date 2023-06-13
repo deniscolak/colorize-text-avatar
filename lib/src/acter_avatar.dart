@@ -38,51 +38,54 @@ class ActerAvatar extends StatefulWidget {
   /// Or alternatively a future that loads the avatar (show fallback until loaded)
   final Future<ImageProvider<Object>>? imageProviderFuture;
 
-  ActerAvatar(
-      {Key? key,
-      this.displayName,
-      this.uniqueName,
-      required this.uniqueId,
-      required this.mode,
-      this.tooltip = TooltipStyle.Combined,
-      this.avatar,
-      this.imageProviderFuture,
-      this.size})
-      : super(key: key ?? Key('avatar-$uniqueId-$size'));
+  ActerAvatar({
+    Key? key,
+    this.displayName,
+    this.uniqueName,
+    required this.uniqueId,
+    required this.mode,
+    this.tooltip = TooltipStyle.Combined,
+    this.avatar,
+    this.imageProviderFuture,
+    this.size,
+  }) : super(key: key ?? Key('avatar-$uniqueId-$size'));
 
   @override
   _ActerAvatar createState() => _ActerAvatar();
 }
 
 class _ActerAvatar extends State<ActerAvatar> {
-  bool _imgSuccess = false;
-  ImageProvider<Object>? _avatar;
+  bool imgSuccess = false;
+  ImageProvider<Object>? avatar;
+
   @override
   void initState() {
     super.initState();
     ImageStreamListener listener =
-        ImageStreamListener(_setImage, onError: _setError);
+        ImageStreamListener(setImage, onError: setError);
     if (widget.avatar != null) {
       widget.avatar!.resolve(ImageConfiguration()).addListener(listener);
     } else if (widget.imageProviderFuture != null) {
-      _fetchImageProvider(listener);
+      fetchImageProvider(listener);
     }
   }
 
-  void _fetchImageProvider(ImageStreamListener listener) async {
+  void fetchImageProvider(ImageStreamListener listener) async {
     var res = await widget.imageProviderFuture!;
     res.resolve(ImageConfiguration()).addListener(listener);
-    setState(() {
-      _avatar = res;
-    });
+    avatar = res;
   }
 
-  void _setImage(ImageInfo image, bool sync) {
-    setState(() => _imgSuccess = true);
+  void setImage(ImageInfo image, bool sync) {
+    if (mounted) {
+      setState(() => imgSuccess = true);
+    }
   }
 
-  void _setError(Object obj, StackTrace? st) {
-    setState(() => _imgSuccess = false);
+  void setError(Object obj, StackTrace? st) {
+    if (mounted) {
+      setState(() => imgSuccess = false);
+    }
     dispose();
   }
 
@@ -92,7 +95,9 @@ class _ActerAvatar extends State<ActerAvatar> {
     switch (widget.tooltip) {
       case TooltipStyle.DisplayName:
         return Tooltip(
-            message: widget.displayName ?? widget.uniqueId, child: child);
+          message: widget.displayName ?? widget.uniqueId,
+          child: child,
+        );
       case TooltipStyle.UniqueId:
         return Tooltip(message: widget.uniqueId, child: child);
       case TooltipStyle.Combined:
@@ -107,10 +112,10 @@ class _ActerAvatar extends State<ActerAvatar> {
   }
 
   Widget inner(BuildContext context) {
-    if (widget.avatar != null && _imgSuccess == true) {
+    if (widget.avatar != null && imgSuccess == true) {
       return renderWithAvatar(context, widget.avatar!);
-    } else if (_avatar != null && _imgSuccess == true) {
-      return renderWithAvatar(context, _avatar!);
+    } else if (avatar != null && imgSuccess == true) {
+      return renderWithAvatar(context, avatar!);
     } else {
       return renderFallback(context);
     }
@@ -122,10 +127,12 @@ class _ActerAvatar extends State<ActerAvatar> {
       error,
       stackTrace,
     );
-    setState(() {
-      _avatar = null;
-      _imgSuccess = false;
-    });
+    if (mounted) {
+      setState(() {
+        avatar = null;
+        imgSuccess = false;
+      });
+    }
   }
 
   Widget renderWithAvatar(BuildContext context, ImageProvider avatar) {
@@ -172,14 +179,12 @@ class _ActerAvatar extends State<ActerAvatar> {
           size: widget.size ?? 24,
           shape: Shape.Rectangle,
         );
-
       case DisplayMode.GroupChat:
         // FIXME: add support for groupchat style
         return SizedBox(
           height: widget.size ?? 24,
           width: widget.size ?? 24,
         );
-
       case DisplayMode.DM:
         // FIXME: add support for dm style
         return SizedBox(
