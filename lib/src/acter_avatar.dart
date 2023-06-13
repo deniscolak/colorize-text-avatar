@@ -73,15 +73,19 @@ class _ActerAvatar extends State<ActerAvatar> {
   void fetchImageProvider(ImageStreamListener listener) async {
     var res = await widget.imageProviderFuture!;
     res.resolve(ImageConfiguration()).addListener(listener);
-    setState(() => avatar = res);
+    avatar = res;
   }
 
   void setImage(ImageInfo image, bool sync) {
-    setState(() => imgSuccess = true);
+    if (mounted) {
+      setState(() => imgSuccess = true);
+    }
   }
 
   void setError(Object obj, StackTrace? st) {
-    setState(() => imgSuccess = false);
+    if (mounted) {
+      setState(() => imgSuccess = false);
+    }
     dispose();
   }
 
@@ -123,10 +127,12 @@ class _ActerAvatar extends State<ActerAvatar> {
       error,
       stackTrace,
     );
-    setState(() {
-      avatar = null;
-      imgSuccess = false;
-    });
+    if (mounted) {
+      setState(() {
+        avatar = null;
+        imgSuccess = false;
+      });
+    }
   }
 
   Widget renderWithAvatar(BuildContext context, ImageProvider avatar) {
