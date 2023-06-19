@@ -36,7 +36,7 @@ class ActerAvatar extends StatefulWidget {
   final ImageProvider<Object>? avatar;
 
   /// Or alternatively a future that loads the avatar (show fallback until loaded)
-  final Future<ImageProvider<Object>>? imageProviderFuture;
+  final Future<ImageProvider<Object>?>? imageProviderFuture;
 
   ActerAvatar({
     Key? key,
@@ -72,7 +72,7 @@ class _ActerAvatar extends State<ActerAvatar> {
 
   void fetchImageProvider(ImageStreamListener listener) async {
     var res = await widget.imageProviderFuture!;
-    res.resolve(ImageConfiguration()).addListener(listener);
+    res!.resolve(ImageConfiguration()).addListener(listener);
     avatar = res;
   }
 
@@ -86,7 +86,6 @@ class _ActerAvatar extends State<ActerAvatar> {
     if (mounted) {
       setState(() => imgSuccess = false);
     }
-    dispose();
   }
 
   @override
