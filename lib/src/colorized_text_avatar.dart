@@ -51,10 +51,14 @@ class TextAvatar extends StatelessWidget {
 
   Color buildBackgroundColor() {
     String newText = text == null ? '?' : _toString(value: text);
-    String hexCode =
-        newText.toString().codeUnits.map((e) => e.toRadixString(16)).join();
+    String hexCode = newText
+        .toString()
+        .codeUnits
+        .map((e) => e.toRadixString(16))
+        .join()
+        .toUpperCase();
 
-    String color = '0xFF${hexCode.substring(0, 6)}';
+    String color = 'FF${hexCode.substring(0, 6)}';
 
     return Color(int.parse(color, radix: 16));
   }
