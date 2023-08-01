@@ -34,19 +34,71 @@ class TextAvatar extends StatelessWidget {
   Widget build(BuildContext context) {
     shape = (shape == null) ? Shape.Rectangle : shape;
     size = (size == null || size! < 32.0) ? 48.0 : size;
-    backgroundColor = backgroundColor == null ? _colorBackgroundConfig() : backgroundColor;
+    backgroundColor =
+        backgroundColor == null ? _colorBackgroundConfig() : backgroundColor;
     textColor = _colorTextConfig();
     return _textDisplay();
   }
 
   Color _colorBackgroundConfig() {
-    if (RegExp(r'[A-Z]|').hasMatch(
-      _textConfiguration(),
-    )) {
-      backgroundColor =
-          colorData[_textConfiguration()[0].toLowerCase().toString()];
+    Color? color = colorData[_textConfiguration()[0].toLowerCase().toString()];
+    if (color == null) {
+      color = buildBackgroundColor();
     }
-    return backgroundColor!;
+
+    return color;
+  }
+
+  List<int> splitToIntList(int e) {
+    List<int> data = [];
+    e.toString().split('').forEach((i) => data.add(int.parse(i)));
+    return data;
+  }
+
+  Color buildBackgroundColor() {
+    String newText = text == null ? '?' : _toString(value: text);
+    List<int> codeList = newText.toString().codeUnits;
+    List<int> newCodeList = [];
+    codeList.forEach((item) {
+      if (item > 15) {
+        List<int> data = splitToIntList(item);
+        newCodeList.addAll(data);
+      } else {
+        newCodeList.add(item);
+      }
+    });
+
+    String colorCode = '#';
+    for (var element in newCodeList) {
+      colorCode += _getHexCharacter(element);
+    }
+
+    String color = colorCode.replaceAll('#', '0xFF');
+
+    return Color(int.parse(color));
+  }
+
+  List<dynamic> hexCharacters = [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ];
+
+  String _getHexCharacter(index) {
+    return hexCharacters[index].toString();
   }
 
   Color _colorTextConfig() {
