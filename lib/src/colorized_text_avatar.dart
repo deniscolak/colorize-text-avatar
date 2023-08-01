@@ -49,56 +49,14 @@ class TextAvatar extends StatelessWidget {
     return color;
   }
 
-  List<int> splitToIntList(int e) {
-    List<int> data = [];
-    e.toString().split('').forEach((i) => data.add(int.parse(i)));
-    return data;
-  }
-
   Color buildBackgroundColor() {
     String newText = text == null ? '?' : _toString(value: text);
-    List<int> codeList = newText.toString().codeUnits;
-    List<int> newCodeList = [];
-    codeList.forEach((item) {
-      if (item > 15) {
-        List<int> data = splitToIntList(item);
-        newCodeList.addAll(data);
-      } else {
-        newCodeList.add(item);
-      }
-    });
+    String hexCode =
+        newText.toString().codeUnits.map((e) => e.toRadixString(16)).join();
 
-    String colorCode = '#';
-    for (var element in newCodeList) {
-      colorCode += _getHexCharacter(element);
-    }
+    String color = '0xFF${hexCode.substring(0, 6)}';
 
-    String color = colorCode.replaceAll('#', '0xFF');
-
-    return Color(int.parse(color));
-  }
-
-  List<dynamic> hexCharacters = [
-    0,
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9,
-    "A",
-    "B",
-    "C",
-    "D",
-    "E",
-    "F"
-  ];
-
-  String _getHexCharacter(index) {
-    return hexCharacters[index].toString();
+    return Color(int.parse(color, radix: 16));
   }
 
   Color _colorTextConfig() {
