@@ -4,9 +4,10 @@ import 'package:flutter/material.dart';
 ColorMaker defaultColorSet = ColorMaker.pastels();
 
 class TextAvatar extends StatelessWidget {
-  Shape? shape;
-  late ColorMaker colorMaker;
-  double? size;
+  final Shape? shape;
+  final ColorMaker? colorMaker;
+  final ColorGenerator? colorGenerator;
+  final double? size;
   final String text;
   final String? sourceText;
   final double? fontSize;
@@ -20,31 +21,80 @@ class TextAvatar extends StatelessWidget {
       required this.text,
       this.sourceText,
       this.shape,
-      ColorMaker? colorMaker,
-      ColorGenerator? colorGenerator,
+      this.colorMaker,
+      this.colorGenerator,
       this.numberLetters,
       this.size,
       this.fontWeight = FontWeight.bold,
       this.fontFamily,
       this.fontSize = 16,
-      this.upperCase = false}) {
+      this.upperCase = false}) {}
+
+  ColorMaker getColorMaker() {
     if (colorMaker == null) {
-      if (colorGenerator == null) {
-        this.colorMaker = defaultColorSet;
+      if (colorGenerator != null) {
+        return ColorMaker(colorGenerator!);
       } else {
-        this.colorMaker = ColorMaker(colorGenerator);
+        return defaultColorSet;
       }
     } else {
-      this.colorMaker = colorMaker;
+      return colorMaker!;
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    shape = (shape == null) ? Shape.Rectangle : shape;
-    size = (size == null || size! < 32.0) ? 48.0 : size;
-    final colors = colorMaker.generateColorFromString(sourceText ?? text);
-    return _textDisplay(colors);
+    final double finalSize = (size == null || size! < 32.0) ? 48.0 : size!;
+    final colors = getColorMaker().generateColorFromString(sourceText ?? text);
+
+    RoundedRectangleBorder _buildTextType() {
+      switch (shape) {
+        case Shape.Rectangle:
+          return RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(6.0),
+          );
+        case Shape.Circular:
+          return RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(finalSize / 2),
+          );
+        case Shape.None:
+          return RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(0.0),
+          );
+        default:
+          {
+            return RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(finalSize / 2),
+            );
+          }
+      }
+    }
+
+    Widget _buildText(ColorSet colors) {
+      return Text(
+        _textConfiguration(),
+        style: TextStyle(
+          color: colors.onSurfaceColor,
+          fontSize: fontSize,
+          fontWeight: fontWeight,
+          fontFamily: fontFamily,
+        ),
+      );
+    }
+
+    return Container(
+      child: Material(
+        shape: _buildTextType(),
+        color: colors.surfaceColor,
+        child: Container(
+          height: finalSize,
+          width: finalSize,
+          child: Center(
+            child: _buildText(colors),
+          ),
+        ),
+      ),
+    );
   }
 
   String _toString({String? value}) {
@@ -63,56 +113,5 @@ class TextAvatar extends StatelessWidget {
     }
 
     return '${newText[0]}';
-  }
-
-  Widget _buildText(ColorSet colors) {
-    return Text(
-      _textConfiguration(),
-      style: TextStyle(
-        color: colors.onSurfaceColor,
-        fontSize: fontSize,
-        fontWeight: fontWeight,
-        fontFamily: fontFamily,
-      ),
-    );
-  }
-
-  _buildTextType() {
-    switch (shape) {
-      case Shape.Rectangle:
-        return RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(6.0),
-        );
-      case Shape.Circular:
-        return RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(size! / 2),
-        );
-      case Shape.None:
-        return RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(0.0),
-        );
-      default:
-        {
-          return RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(size! / 2),
-          );
-        }
-    }
-  }
-
-  Widget _textDisplay(ColorSet colors) {
-    return Container(
-      child: Material(
-        shape: _buildTextType(),
-        color: colors.surfaceColor,
-        child: Container(
-          height: size,
-          width: size,
-          child: Center(
-            child: _buildText(colors),
-          ),
-        ),
-      ),
-    );
   }
 }
