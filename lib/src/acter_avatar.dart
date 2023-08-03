@@ -166,29 +166,19 @@ class _ActerAvatar extends State<ActerAvatar> {
     /// Fallback
     switch (widget.mode) {
       case DisplayMode.User:
+      case DisplayMode.DM:
         // User fallback mode
         return MultiAvatar(
           uniqueId: widget.uniqueId,
           size: widget.size ?? 24,
         );
       case DisplayMode.Space:
+      case DisplayMode.GroupChat:
         return TextAvatar(
           text: widget.displayName ?? widget.uniqueId,
           sourceText: widget.uniqueId,
           size: widget.size ?? 24,
           shape: Shape.Rectangle,
-        );
-      case DisplayMode.GroupChat:
-        // FIXME: add support for groupchat style
-        return SizedBox(
-          height: widget.size ?? 24,
-          width: widget.size ?? 24,
-        );
-      case DisplayMode.DM:
-        // FIXME: add support for dm style
-        return SizedBox(
-          height: widget.size ?? 24,
-          width: widget.size ?? 24,
         );
     }
   }
