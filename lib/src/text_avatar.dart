@@ -16,19 +16,20 @@ class TextAvatar extends StatelessWidget {
   final String? fontFamily;
   final bool? upperCase;
 
-  TextAvatar(
-      {Key? key,
-      required this.text,
-      this.sourceText,
-      this.shape,
-      this.colorMaker,
-      this.colorGenerator,
-      this.numberLetters,
-      this.size,
-      this.fontWeight = FontWeight.bold,
-      this.fontFamily,
-      this.fontSize = 16,
-      this.upperCase = false}) {}
+  const TextAvatar({
+    Key? key,
+    required this.text,
+    this.sourceText,
+    this.shape,
+    this.colorMaker,
+    this.colorGenerator,
+    this.numberLetters,
+    this.size,
+    this.fontWeight = FontWeight.bold,
+    this.fontFamily,
+    this.fontSize,
+    this.upperCase = false,
+  });
 
   ColorMaker getColorMaker() {
     if (colorMaker == null) {
@@ -44,7 +45,8 @@ class TextAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double finalSize = (size == null || size! < 32.0) ? 48.0 : size!;
+    final double finalSize = size ?? 48.0;
+    final double fSize = fontSize ?? (finalSize / 3);
     final colors = getColorMaker().generateColorFromString(sourceText ?? text);
 
     RoundedRectangleBorder _buildTextType() {
@@ -75,7 +77,7 @@ class TextAvatar extends StatelessWidget {
         _textConfiguration(),
         style: TextStyle(
           color: colors.onSurfaceColor,
-          fontSize: fontSize,
+          fontSize: fSize,
           fontWeight: fontWeight,
           fontFamily: fontFamily,
         ),
