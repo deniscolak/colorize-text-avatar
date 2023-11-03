@@ -90,182 +90,428 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            const SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.all(5),
-              child: Text(
-                'Example Acter Avatars',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+        child: SingleChildScrollView(
+          child: Column(
+            // Column is also a layout widget. It takes a list of children and
+            // arranges them vertically. By default, it sizes itself to fit its
+            // children horizontally, and tries to be as tall as its parent.
+            //
+            // Invoke "debug painting" (press "p" in the console, choose the
+            // "Toggle Debug Paint" action from the Flutter Inspector in Android
+            // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
+            // to see the wireframe for each widget.
+            //
+            // Column has various properties to control how it sizes itself and
+            // how it positions its children. Here we use mainAxisAlignment to
+            // center the children vertically; the main axis here is the vertical
+            // axis because Columns are vertical (the cross axis would be
+            // horizontal).
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              const SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.all(5),
+                child: Text(
+                  'Example Acter Avatars',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                ),
               ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Text(
-              'Avatar with size specified',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  ActerAvatar(
-                    key: TestKeys.widgetKey,
-                    mode: DisplayMode.User,
-                    displayName: "Ali Akalın",
-                    uniqueId: "Ali Akalın",
-                    // avatar: AssetImage('assets/images/avatar-1.jpg'),
-                    imageProviderFuture: getFutureImage,
-                    size: 36,
-                  ),
-                  SizedBox(
-                    width: 12,
-                  ),
-                  ActerAvatar(
-                    mode: DisplayMode.User,
-                    displayName: "Bulut Peker",
-                    uniqueId: "Bulut Peker",
-                    avatar: AssetImage('assets/images/avatar-2.jpg'),
-                    size: 36,
-                  ),
-                  SizedBox(
-                    width: 12,
-                  ),
-                  ActerAvatar(
-                    mode: DisplayMode.User,
-                    displayName: "Ceylin Oztürk",
-                    uniqueId: "Ceylin Oztürk",
-                    avatar: AssetImage('assets/images/avatar-3.jpg'),
-                    size: 36,
-                  ),
-                ],
+              SizedBox(
+                height: 20,
               ),
-            ),
-            const SizedBox(height: 20),
-            Text(
-              'Avatar with default size',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ActerAvatar(
-                    mode: DisplayMode.User,
-                    displayName: "Xantos Salvo",
-                    uniqueId: "Xantos Salvo",
-                    avatar: AssetImage('assets/images/avatar-1.jpg'),
-                  ),
-                  SizedBox(
-                    width: 12,
-                  ),
-                  ActerAvatar(
-                      mode: DisplayMode.User,
-                      displayName: "Yuval Noah",
-                      uniqueId: "Yuval Noah",
-                      avatar: AssetImage('assets/images/avatar-2.jpg')),
-                  SizedBox(
-                    width: 12,
-                  ),
-                  ActerAvatar(
-                    mode: DisplayMode.User,
-                    displayName: "Zoey Gen",
-                    uniqueId: "Zoey Gen",
-                    avatar: AssetImage('assets/images/avatar-3.jpg'),
-                  ),
-                ],
+              Text(
+                'Avatar with size specified',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
               ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Text(
-              'Rectangular Acter Avatars ',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-            ),
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 5.0, vertical: 8.0),
-              child: Column(
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    ActerAvatar(
+                      key: TestKeys.widgetKey,
+                      mode: DisplayMode.DM,
+                      avatarInfo: AvatarInfo(
+                          uniqueId: 'Ali Akalın',
+                          displayName: 'Ali Akalın',
+                          imageProviderFuture: getFutureImage),
+                      size: 36,
+                    ),
+                    SizedBox(
+                      width: 12,
+                    ),
+                    ActerAvatar(
+                      mode: DisplayMode.DM,
+                      avatarInfo: AvatarInfo(
+                        uniqueId: 'Bulut Peker',
+                        displayName: 'Bulut Peker',
+                        avatar: AssetImage('assets/images/avatar-2.jpg'),
+                      ),
+                      size: 36,
+                    ),
+                    SizedBox(
+                      width: 12,
+                    ),
+                    ActerAvatar(
+                      mode: DisplayMode.DM,
+                      avatarInfo: AvatarInfo(
+                        uniqueId: 'Ceylin Oztürk',
+                        displayName: 'Ceylin Oztürk',
+                        avatar: AssetImage('assets/images/avatar-3.jpg'),
+                      ),
+                      size: 36,
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 20),
+              Text(
+                'Avatar with default size',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ActerAvatar(
+                      mode: DisplayMode.DM,
+                      avatarInfo: AvatarInfo(
+                        displayName: "Xantos Salvo",
+                        uniqueId: "Xantos Salvo",
+                        avatar: AssetImage('assets/images/avatar-1.jpg'),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 12,
+                    ),
+                    ActerAvatar(
+                      mode: DisplayMode.DM,
+                      avatarInfo: AvatarInfo(
+                        displayName: "Yuval Noah",
+                        uniqueId: "Yuval Noah",
+                        avatar: AssetImage('assets/images/avatar-2.jpg'),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 12,
+                    ),
+                    ActerAvatar(
+                      mode: DisplayMode.DM,
+                      avatarInfo: AvatarInfo(
+                        displayName: "Zoey Gen",
+                        uniqueId: "Zoey Gen",
+                        avatar: AssetImage('assets/images/avatar-3.jpg'),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                'Rectangular Acter Avatars ',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 5.0, vertical: 8.0),
+                child: Column(
+                  children: <Widget>[
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ActerAvatar(
+                          mode: DisplayMode.Space,
+                          avatarInfo: AvatarInfo(
+                            displayName: "Ali Akalın",
+                            uniqueId: "Ali Akalın",
+                          ),
+                        ),
+                        SizedBox(
+                          width: 12,
+                        ),
+                        ActerAvatar(
+                          mode: DisplayMode.Space,
+                          avatarInfo: AvatarInfo(
+                            displayName: "Bulut Peker",
+                            uniqueId: "Bulut Peker",
+                          ),
+                        ),
+                        SizedBox(
+                          width: 12,
+                        ),
+                        ActerAvatar(
+                          mode: DisplayMode.Space,
+                          avatarInfo: AvatarInfo(
+                            displayName: "Ceylin Oztürk",
+                            uniqueId: "Ceylin Oztürk",
+                          ),
+                        ),
+                        SizedBox(
+                          width: 12,
+                        ),
+                        Text('.....'),
+                        SizedBox(
+                          width: 12,
+                        ),
+                        ActerAvatar(
+                          mode: DisplayMode.Space,
+                          avatarInfo: AvatarInfo(
+                            displayName: "space-1",
+                            uniqueId: "space-1",
+                            avatar: AssetImage('assets/images/space-1.jpg'),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 12,
+                        ),
+                        ActerAvatar(
+                          mode: DisplayMode.Space,
+                          avatarInfo: AvatarInfo(
+                            displayName: "space-2",
+                            uniqueId: "space-2",
+                            avatar: AssetImage('assets/images/space-2.jpg'),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 12,
+                        ),
+                        ActerAvatar(
+                          mode: DisplayMode.Space,
+                          avatarInfo: AvatarInfo(
+                            displayName: "space-3",
+                            uniqueId: "space-3",
+                            avatar: AssetImage('assets/images/space-3.jpg'),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          Text('Fallback',
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.w400)),
+                          const SizedBox(width: 145),
+                          Text('Avatar',
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.w400)),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 20),
+              Text(
+                'Rectangular Acter Avatars With Parent Badge',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 5.0, vertical: 8.0),
+                child: Column(
+                  children: <Widget>[
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ActerAvatar(
+                          mode: DisplayMode.Space,
+                          avatarInfo: AvatarInfo(
+                            displayName: "Ali Akalın",
+                            uniqueId: "Ali Akalın",
+                          ),
+                          avatarsInfo: [
+                            AvatarInfo(
+                                uniqueId: 'Lorem Ipsum',
+                                displayName: 'Lorem Ipsum')
+                          ],
+                        ),
+                        SizedBox(
+                          width: 12,
+                        ),
+                        ActerAvatar(
+                          mode: DisplayMode.Space,
+                          avatarInfo: AvatarInfo(
+                            displayName: "Bulut Peker",
+                            uniqueId: "Bulut Peker",
+                          ),
+                          avatarsInfo: [
+                            AvatarInfo(
+                                uniqueId: 'Ipsum Lorem',
+                                displayName: 'Ipsum Lorem')
+                          ],
+                        ),
+                        SizedBox(
+                          width: 12,
+                        ),
+                        ActerAvatar(
+                          mode: DisplayMode.Space,
+                          avatarInfo: AvatarInfo(
+                            displayName: "Ceylin Oztürk",
+                            uniqueId: "Ceylin Oztürk",
+                          ),
+                          avatarsInfo: [
+                            AvatarInfo(
+                                uniqueId: 'Lorem Ipsum',
+                                displayName: 'Lorem Ipsum')
+                          ],
+                        ),
+                        SizedBox(
+                          width: 12,
+                        ),
+                        Text('.....'),
+                        SizedBox(
+                          width: 12,
+                        ),
+                        ActerAvatar(
+                          mode: DisplayMode.Space,
+                          avatarInfo: AvatarInfo(
+                            displayName: "space-1",
+                            uniqueId: "space-1",
+                            avatar: AssetImage('assets/images/space-1.jpg'),
+                          ),
+                          avatarsInfo: [
+                            AvatarInfo(
+                              displayName: "space-2",
+                              uniqueId: "space-2",
+                              avatar: AssetImage('assets/images/space-2.jpg'),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          width: 12,
+                        ),
+                        ActerAvatar(
+                          mode: DisplayMode.Space,
+                          avatarInfo: AvatarInfo(
+                            displayName: "space-2",
+                            uniqueId: "space-2",
+                            avatar: AssetImage('assets/images/space-2.jpg'),
+                          ),
+                          avatarsInfo: [
+                            AvatarInfo(
+                              displayName: "space-3",
+                              uniqueId: "space-3",
+                              avatar: AssetImage('assets/images/space-3.jpg'),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          width: 12,
+                        ),
+                        ActerAvatar(
+                          mode: DisplayMode.Space,
+                          avatarInfo: AvatarInfo(
+                            displayName: "space-3",
+                            uniqueId: "space-3",
+                            avatar: AssetImage('assets/images/space-3.jpg'),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          Text('Fallback',
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.w400)),
+                          const SizedBox(width: 145),
+                          Text('Avatar',
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.w400)),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 20),
+              Text(
+                'Circular Acter Avatars',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Column(
                 children: <Widget>[
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       ActerAvatar(
-                        mode: DisplayMode.Space,
-                        displayName: "Ali Akalın",
-                        uniqueId: "Ali Akalın",
+                        mode: DisplayMode.DM,
+                        avatarInfo: AvatarInfo(
+                          uniqueId: "Xantos Salvo",
+                          displayName: 'Xantos Salvo',
+                        ),
                       ),
                       SizedBox(
                         width: 12,
                       ),
                       ActerAvatar(
-                        mode: DisplayMode.Space,
-                        displayName: "Bulut Peker",
-                        uniqueId: "Bulut Peker",
+                        mode: DisplayMode.DM,
+                        avatarInfo: AvatarInfo(
+                          uniqueId: "Yuval Noah",
+                          displayName: "Yuval Noah",
+                        ),
                       ),
                       SizedBox(
                         width: 12,
                       ),
                       ActerAvatar(
-                        mode: DisplayMode.Space,
-                        displayName: "Ceylin Oztürk",
-                        uniqueId: "Ceylin Oztürk",
+                        mode: DisplayMode.DM,
+                        avatarInfo: AvatarInfo(
+                          uniqueId: "Zoey Gen",
+                          displayName: 'Zoey Gen',
+                        ),
                       ),
                       SizedBox(
-                        width: 12,
+                        width: 10,
                       ),
                       Text('.....'),
                       SizedBox(
-                        width: 12,
+                        width: 10,
                       ),
                       ActerAvatar(
-                        mode: DisplayMode.Space,
-                        displayName: "space-1",
-                        uniqueId: "space-1",
-                        avatar: AssetImage('assets/images/space-1.jpg'),
-                        size: 46,
+                        mode: DisplayMode.DM,
+                        avatarInfo: AvatarInfo(
+                          uniqueId: "avatar-1",
+                          displayName: "",
+                          avatar: AssetImage('assets/images/avatar-1.jpg'),
+                        ),
                       ),
                       SizedBox(
                         width: 12,
                       ),
                       ActerAvatar(
-                        mode: DisplayMode.Space,
-                        displayName: "space-2",
-                        uniqueId: "space-2",
-                        avatar: AssetImage('assets/images/space-2.jpg'),
-                        size: 46,
+                        mode: DisplayMode.DM,
+                        avatarInfo: AvatarInfo(
+                          uniqueId: "avatar-2",
+                          displayName: "Bulut Peker",
+                          avatar: AssetImage('assets/images/avatar-2.jpg'),
+                        ),
                       ),
                       SizedBox(
                         width: 12,
                       ),
                       ActerAvatar(
-                        mode: DisplayMode.Space,
-                        displayName: "space-3",
-                        uniqueId: "space-3",
-                        avatar: AssetImage('assets/images/space-3.jpg'),
-                        size: 46,
+                        mode: DisplayMode.DM,
+                        avatarInfo: AvatarInfo(
+                          uniqueId: 'avatar-3',
+                          displayName: "Ceylin Oztürk",
+                          avatar: AssetImage('assets/images/avatar-3.jpg'),
+                        ),
                       ),
                     ],
                   ),
@@ -286,101 +532,177 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ],
               ),
-            ),
-            Text(
-              'Circular Acter Avatars',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Column(
-              children: <Widget>[
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ActerAvatar(
-                      mode: DisplayMode.User,
-                      uniqueId: "Xantos Salvo",
-                      displayName: 'Xantos Salvo',
-                      size: 48,
-                    ),
-                    SizedBox(
-                      width: 12,
-                    ),
-                    ActerAvatar(
-                      mode: DisplayMode.User,
-                      uniqueId: "Yuval Noah",
-                      displayName: "Yuval Noah",
-                      size: 48,
-                    ),
-                    SizedBox(
-                      width: 12,
-                    ),
-                    ActerAvatar(
-                      mode: DisplayMode.User,
-                      uniqueId: "Zoey Gen",
-                      displayName: 'Zoey Gen',
-                      size: 48,
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Text('.....'),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    ActerAvatar(
-                      uniqueId: "avatar-1",
-                      displayName: "",
-                      mode: DisplayMode.User,
-                      avatar: AssetImage('assets/images/avatar-1.jpg'),
-                      size: 26,
-                    ),
-                    SizedBox(
-                      width: 12,
-                    ),
-                    ActerAvatar(
-                      uniqueId: "avatar-2",
-                      mode: DisplayMode.User,
-                      displayName: "Bulut Peker",
-                      avatar: AssetImage('assets/images/avatar-2.jpg'),
-                      size: 26,
-                    ),
-                    SizedBox(
-                      width: 12,
-                    ),
-                    ActerAvatar(
-                      uniqueId: 'avatar-3',
-                      mode: DisplayMode.User,
-                      displayName: "Ceylin Oztürk",
-                      avatar: AssetImage('assets/images/avatar-3.jpg'),
-                      size: 26,
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      Text('Fallback',
-                          style: TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.w400)),
-                      const SizedBox(width: 145),
-                      Text('Avatar',
-                          style: TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.w400)),
+              const SizedBox(height: 20),
+              Text(
+                'Circular Stacked Acter Avatars',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Column(
+                children: <Widget>[
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ActerAvatar(
+                        mode: DisplayMode.GroupDM,
+                        avatarInfo: AvatarInfo(
+                          uniqueId: "Xantos Salvo",
+                          displayName: 'Xantos Salvo',
+                        ),
+                        avatarsInfo: [
+                          AvatarInfo(
+                            uniqueId: "Yuval Noah",
+                            displayName: "Yuval Noah",
+                          ),
+                          AvatarInfo(
+                            uniqueId: "Yuval Noah",
+                            displayName: "Yuval Noah",
+                          ),
+                          AvatarInfo(
+                            uniqueId: "Yuval Noah",
+                            displayName: "Yuval Noah",
+                          ),
+                          AvatarInfo(
+                            uniqueId: "Yuval Noah",
+                            displayName: "Yuval Noah",
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        width: 12,
+                      ),
+                      ActerAvatar(
+                        mode: DisplayMode.GroupDM,
+                        avatarInfo: AvatarInfo(
+                          uniqueId: "Yuval Noah",
+                          displayName: "Yuval Noah",
+                        ),
+                        avatarsInfo: [
+                          AvatarInfo(
+                            uniqueId: "Zoey Gen",
+                            displayName: 'Zoey Gen',
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        width: 12,
+                      ),
+                      ActerAvatar(
+                        mode: DisplayMode.GroupDM,
+                        avatarInfo: AvatarInfo(
+                          uniqueId: "Zoey Gen",
+                          displayName: 'Zoey Gen',
+                        ),
+                        avatarsInfo: [
+                          AvatarInfo(
+                            uniqueId: "Yuval Noah",
+                            displayName: "Yuval Noah",
+                          ),
+                          AvatarInfo(
+                            uniqueId: "Yuval Noah",
+                            displayName: "Yuval Noah",
+                          ),
+                          AvatarInfo(
+                            uniqueId: "Yuval Noah",
+                            displayName: "Yuval Noah",
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text('.....'),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      ActerAvatar(
+                        mode: DisplayMode.GroupDM,
+                        avatarInfo: AvatarInfo(
+                          uniqueId: "avatar-1",
+                          displayName: "",
+                          avatar: AssetImage('assets/images/avatar-1.jpg'),
+                        ),
+                        avatarsInfo: [
+                          AvatarInfo(
+                            uniqueId: "avatar-2",
+                            displayName: "Bulut Peker",
+                            avatar: AssetImage('assets/images/avatar-2.jpg'),
+                          ),
+                          AvatarInfo(
+                            uniqueId: "avatar-2",
+                            displayName: "Bulut Peker",
+                            avatar: AssetImage('assets/images/avatar-2.jpg'),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        width: 12,
+                      ),
+                      ActerAvatar(
+                        mode: DisplayMode.GroupDM,
+                        avatarInfo: AvatarInfo(
+                          uniqueId: "avatar-2",
+                          displayName: "Bulut Peker",
+                          avatar: AssetImage('assets/images/avatar-2.jpg'),
+                        ),
+                        avatarsInfo: [
+                          AvatarInfo(
+                            uniqueId: "avatar-1",
+                            displayName: "",
+                            avatar: AssetImage('assets/images/avatar-1.jpg'),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        width: 12,
+                      ),
+                      ActerAvatar(
+                        mode: DisplayMode.GroupDM,
+                        avatarInfo: AvatarInfo(
+                          uniqueId: 'avatar-3',
+                          displayName: "Ceylin Oztürk",
+                          avatar: AssetImage('assets/images/avatar-3.jpg'),
+                        ),
+                        avatarsInfo: [
+                          AvatarInfo(
+                            uniqueId: "avatar-1",
+                            displayName: "",
+                            avatar: AssetImage('assets/images/avatar-1.jpg'),
+                          ),
+                          AvatarInfo(
+                            uniqueId: "avatar-1",
+                            displayName: "",
+                            avatar: AssetImage('assets/images/avatar-1.jpg'),
+                          ),
+                        ],
+                      ),
                     ],
                   ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 20,
-            ),
-          ],
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Text('Fallback',
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.w400)),
+                        const SizedBox(width: 145),
+                        Text('Avatar',
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.w400)),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 20,
+              ),
+            ],
+          ),
         ),
       ),
     );
