@@ -1,3 +1,4 @@
+/// parses unique matrix `userId` and return name.
 String? simplifyUserId(String name) {
   // example - @bitfriend:acter.global
   RegExp re = RegExp(r'^@(.*):\w+([\.-]?\w+)*(\.\w+)+$');

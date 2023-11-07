@@ -428,8 +428,8 @@ class _ActerAvatar extends State<ActerAvatar> {
                   : Column(
                       children: <Widget>[
                         SizedBox(
-                          height: badgeSize,
-                          width: badgeSize,
+                          height: widget.badgeSize ?? badgeSize,
+                          width: widget.badgeSize ?? badgeSize,
                           child: widget.secondaryToolTip != TooltipStyle.None
                               ? Tooltip(
                                   message: secTooltipMsg(),

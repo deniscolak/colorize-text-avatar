@@ -1,10 +1,8 @@
-import 'dart:typed_data';
-
-import 'package:example/constants/keys.dart';
 import 'package:flutter/material.dart';
 
 import 'package:acter_avatar/acter_avatar.dart';
 import 'package:flutter/services.dart';
+import 'package:uuid/uuid.dart';
 
 void main() {
   runApp(MyApp());
@@ -55,18 +53,19 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   late Future<ImageProvider<Object>> getFutureImage;
+  var uuid = Uuid();
 
   @override
   void initState() {
     super.initState();
-    getFutureImage = getImage();
+    getFutureImage = getImage('assets/images/avatar-1.jpg');
   }
 
   // An example of loading future image with bytes.
-  Future<ImageProvider<Object>> getImage() async {
+  Future<ImageProvider<Object>> getImage(String path) async {
     late var bytes;
     await Future.delayed(Duration(seconds: 3), () async {
-      ByteData imageData = await rootBundle.load('assets/images/avatar-1.jpg');
+      ByteData imageData = await rootBundle.load(path);
       bytes = imageData.buffer.asUint8List();
     });
     return MemoryImage(bytes);
@@ -129,10 +128,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     ActerAvatar(
-                      key: TestKeys.widgetKey,
                       mode: DisplayMode.DM,
                       avatarInfo: AvatarInfo(
-                          uniqueId: 'Ali Akalın',
+                          uniqueId: '@aliKah:lorem.org',
                           displayName: 'Ali Akalın',
                           imageProviderFuture: getFutureImage),
                       size: 36,
@@ -143,7 +141,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ActerAvatar(
                       mode: DisplayMode.DM,
                       avatarInfo: AvatarInfo(
-                        uniqueId: 'Bulut Peker',
+                        uniqueId: '@belut:ipsum.org',
                         displayName: 'Bulut Peker',
                         avatar: AssetImage('assets/images/avatar-2.jpg'),
                       ),
@@ -155,7 +153,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ActerAvatar(
                       mode: DisplayMode.DM,
                       avatarInfo: AvatarInfo(
-                        uniqueId: 'Ceylin Oztürk',
+                        uniqueId: '@ceylin:lipsum.org',
                         displayName: 'Ceylin Oztürk',
                         avatar: AssetImage('assets/images/avatar-3.jpg'),
                       ),
@@ -178,9 +176,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     ActerAvatar(
                       mode: DisplayMode.DM,
                       avatarInfo: AvatarInfo(
-                        displayName: "Xantos Salvo",
-                        uniqueId: "Xantos Salvo",
-                        avatar: AssetImage('assets/images/avatar-1.jpg'),
+                        displayName: "Ali Akalın",
+                        uniqueId: "@aliKah:lorem.org",
+                        imageProviderFuture: getFutureImage,
                       ),
                     ),
                     SizedBox(
@@ -189,8 +187,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     ActerAvatar(
                       mode: DisplayMode.DM,
                       avatarInfo: AvatarInfo(
-                        displayName: "Yuval Noah",
-                        uniqueId: "Yuval Noah",
+                        displayName: "Bulut Peker",
+                        uniqueId: "@belut:ipsum.org",
                         avatar: AssetImage('assets/images/avatar-2.jpg'),
                       ),
                     ),
@@ -200,8 +198,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     ActerAvatar(
                       mode: DisplayMode.DM,
                       avatarInfo: AvatarInfo(
-                        displayName: "Zoey Gen",
-                        uniqueId: "Zoey Gen",
+                        displayName: "Ceylin Oztürk",
+                        uniqueId: "@ceylin:lipsum.org",
                         avatar: AssetImage('assets/images/avatar-3.jpg'),
                       ),
                     ),
@@ -227,8 +225,8 @@ class _MyHomePageState extends State<MyHomePage> {
                         ActerAvatar(
                           mode: DisplayMode.Space,
                           avatarInfo: AvatarInfo(
-                            displayName: "Ali Akalın",
-                            uniqueId: "Ali Akalın",
+                            displayName: "A-Space",
+                            uniqueId: uuid.v4(),
                           ),
                         ),
                         SizedBox(
@@ -237,8 +235,8 @@ class _MyHomePageState extends State<MyHomePage> {
                         ActerAvatar(
                           mode: DisplayMode.Space,
                           avatarInfo: AvatarInfo(
-                            displayName: "Bulut Peker",
-                            uniqueId: "Bulut Peker",
+                            displayName: "B-Space",
+                            uniqueId: uuid.v4(),
                           ),
                         ),
                         SizedBox(
@@ -247,8 +245,8 @@ class _MyHomePageState extends State<MyHomePage> {
                         ActerAvatar(
                           mode: DisplayMode.Space,
                           avatarInfo: AvatarInfo(
-                            displayName: "Ceylin Oztürk",
-                            uniqueId: "Ceylin Oztürk",
+                            displayName: "C-Space",
+                            uniqueId: uuid.v4(),
                           ),
                         ),
                         SizedBox(
@@ -261,8 +259,8 @@ class _MyHomePageState extends State<MyHomePage> {
                         ActerAvatar(
                           mode: DisplayMode.Space,
                           avatarInfo: AvatarInfo(
-                            displayName: "space-1",
-                            uniqueId: "space-1",
+                            displayName: "Lorem",
+                            uniqueId: uuid.v4(),
                             avatar: AssetImage('assets/images/space-1.jpg'),
                           ),
                         ),
@@ -272,8 +270,8 @@ class _MyHomePageState extends State<MyHomePage> {
                         ActerAvatar(
                           mode: DisplayMode.Space,
                           avatarInfo: AvatarInfo(
-                            displayName: "space-2",
-                            uniqueId: "space-2",
+                            displayName: "Ipsum",
+                            uniqueId: uuid.v4(),
                             avatar: AssetImage('assets/images/space-2.jpg'),
                           ),
                         ),
@@ -283,8 +281,8 @@ class _MyHomePageState extends State<MyHomePage> {
                         ActerAvatar(
                           mode: DisplayMode.Space,
                           avatarInfo: AvatarInfo(
-                            displayName: "space-3",
-                            uniqueId: "space-3",
+                            displayName: "Lipsum",
+                            uniqueId: uuid.v4(),
                             avatar: AssetImage('assets/images/space-3.jpg'),
                           ),
                         ),
@@ -325,13 +323,12 @@ class _MyHomePageState extends State<MyHomePage> {
                         ActerAvatar(
                           mode: DisplayMode.Space,
                           avatarInfo: AvatarInfo(
-                            displayName: "Ali Akalın",
-                            uniqueId: "Ali Akalın",
+                            displayName: "A-Space",
+                            uniqueId: uuid.v4(),
                           ),
                           avatarsInfo: [
                             AvatarInfo(
-                                uniqueId: 'Lorem Ipsum',
-                                displayName: 'Lorem Ipsum')
+                                uniqueId: uuid.v4(), displayName: 'Lorem Ipsum')
                           ],
                         ),
                         SizedBox(
@@ -340,13 +337,12 @@ class _MyHomePageState extends State<MyHomePage> {
                         ActerAvatar(
                           mode: DisplayMode.Space,
                           avatarInfo: AvatarInfo(
-                            displayName: "Bulut Peker",
-                            uniqueId: "Bulut Peker",
+                            displayName: "B-Space",
+                            uniqueId: uuid.v4(),
                           ),
                           avatarsInfo: [
                             AvatarInfo(
-                                uniqueId: 'Ipsum Lorem',
-                                displayName: 'Ipsum Lorem')
+                                uniqueId: uuid.v4(), displayName: 'Ipsum Lorem')
                           ],
                         ),
                         SizedBox(
@@ -355,13 +351,12 @@ class _MyHomePageState extends State<MyHomePage> {
                         ActerAvatar(
                           mode: DisplayMode.Space,
                           avatarInfo: AvatarInfo(
-                            displayName: "Ceylin Oztürk",
-                            uniqueId: "Ceylin Oztürk",
+                            displayName: "C-Space",
+                            uniqueId: uuid.v4(),
                           ),
                           avatarsInfo: [
                             AvatarInfo(
-                                uniqueId: 'Lorem Ipsum',
-                                displayName: 'Lorem Ipsum')
+                                uniqueId: uuid.v4(), displayName: 'Lorem Ipsum')
                           ],
                         ),
                         SizedBox(
@@ -374,14 +369,14 @@ class _MyHomePageState extends State<MyHomePage> {
                         ActerAvatar(
                           mode: DisplayMode.Space,
                           avatarInfo: AvatarInfo(
-                            displayName: "space-1",
-                            uniqueId: "space-1",
+                            displayName: 'A-Space',
+                            uniqueId: uuid.v4(),
                             avatar: AssetImage('assets/images/space-1.jpg'),
                           ),
                           avatarsInfo: [
                             AvatarInfo(
-                              displayName: "space-2",
-                              uniqueId: "space-2",
+                              displayName: "B-Space",
+                              uniqueId: uuid.v4(),
                               avatar: AssetImage('assets/images/space-2.jpg'),
                             ),
                           ],
@@ -392,14 +387,14 @@ class _MyHomePageState extends State<MyHomePage> {
                         ActerAvatar(
                           mode: DisplayMode.Space,
                           avatarInfo: AvatarInfo(
-                            displayName: "space-2",
-                            uniqueId: "space-2",
+                            displayName: "B-Space",
+                            uniqueId: uuid.v4(),
                             avatar: AssetImage('assets/images/space-2.jpg'),
                           ),
                           avatarsInfo: [
                             AvatarInfo(
-                              displayName: "space-3",
-                              uniqueId: "space-3",
+                              displayName: "C-Space",
+                              uniqueId: uuid.v4(),
                               avatar: AssetImage('assets/images/space-3.jpg'),
                             ),
                           ],
@@ -410,8 +405,8 @@ class _MyHomePageState extends State<MyHomePage> {
                         ActerAvatar(
                           mode: DisplayMode.Space,
                           avatarInfo: AvatarInfo(
-                            displayName: "space-3",
-                            uniqueId: "space-3",
+                            displayName: "C-Space",
+                            uniqueId: uuid.v4(),
                             avatar: AssetImage('assets/images/space-3.jpg'),
                           ),
                         ),
@@ -452,8 +447,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       ActerAvatar(
                         mode: DisplayMode.DM,
                         avatarInfo: AvatarInfo(
-                          uniqueId: "Xantos Salvo",
-                          displayName: 'Xantos Salvo',
+                          displayName: "Ali Akalın",
+                          uniqueId: "@aliKah:lorem.org",
                         ),
                       ),
                       SizedBox(
@@ -462,8 +457,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       ActerAvatar(
                         mode: DisplayMode.DM,
                         avatarInfo: AvatarInfo(
-                          uniqueId: "Yuval Noah",
-                          displayName: "Yuval Noah",
+                          uniqueId: '@belut:ipsum.org',
+                          displayName: 'Bulut Peker',
                         ),
                       ),
                       SizedBox(
@@ -472,8 +467,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       ActerAvatar(
                         mode: DisplayMode.DM,
                         avatarInfo: AvatarInfo(
-                          uniqueId: "Zoey Gen",
-                          displayName: 'Zoey Gen',
+                          displayName: "Ceylin Oztürk",
+                          uniqueId: "@ceylin:lipsum.org",
                         ),
                       ),
                       SizedBox(
@@ -484,21 +479,23 @@ class _MyHomePageState extends State<MyHomePage> {
                         width: 10,
                       ),
                       ActerAvatar(
+                        key: UniqueKey(),
                         mode: DisplayMode.DM,
                         avatarInfo: AvatarInfo(
-                          uniqueId: "avatar-1",
-                          displayName: "",
-                          avatar: AssetImage('assets/images/avatar-1.jpg'),
+                          displayName: "Ali Akalın",
+                          uniqueId: "@aliKah:lorem.org",
+                          imageProviderFuture: getFutureImage,
                         ),
                       ),
                       SizedBox(
                         width: 12,
                       ),
                       ActerAvatar(
+                        key: UniqueKey(),
                         mode: DisplayMode.DM,
                         avatarInfo: AvatarInfo(
-                          uniqueId: "avatar-2",
-                          displayName: "Bulut Peker",
+                          uniqueId: '@belut:ipsum.org',
+                          displayName: 'Bulut Peker',
                           avatar: AssetImage('assets/images/avatar-2.jpg'),
                         ),
                       ),
@@ -506,10 +503,11 @@ class _MyHomePageState extends State<MyHomePage> {
                         width: 12,
                       ),
                       ActerAvatar(
+                        key: UniqueKey(),
                         mode: DisplayMode.DM,
                         avatarInfo: AvatarInfo(
-                          uniqueId: 'avatar-3',
                           displayName: "Ceylin Oztürk",
+                          uniqueId: "@ceylin:lipsum.org",
                           avatar: AssetImage('assets/images/avatar-3.jpg'),
                         ),
                       ),
@@ -549,24 +547,24 @@ class _MyHomePageState extends State<MyHomePage> {
                       ActerAvatar(
                         mode: DisplayMode.GroupDM,
                         avatarInfo: AvatarInfo(
-                          uniqueId: "Xantos Salvo",
+                          uniqueId: "@xantos:lipsum.org",
                           displayName: 'Xantos Salvo',
                         ),
                         avatarsInfo: [
                           AvatarInfo(
-                            uniqueId: "Yuval Noah",
+                            uniqueId: "@yuval:lorem.org",
                             displayName: "Yuval Noah",
                           ),
                           AvatarInfo(
-                            uniqueId: "Yuval Noah",
+                            uniqueId: "@yuval:lorem.org",
                             displayName: "Yuval Noah",
                           ),
                           AvatarInfo(
-                            uniqueId: "Yuval Noah",
+                            uniqueId: "@yuval:lorem.org",
                             displayName: "Yuval Noah",
                           ),
                           AvatarInfo(
-                            uniqueId: "Yuval Noah",
+                            uniqueId: "@yuval:lorem.org",
                             displayName: "Yuval Noah",
                           ),
                         ],
@@ -577,12 +575,12 @@ class _MyHomePageState extends State<MyHomePage> {
                       ActerAvatar(
                         mode: DisplayMode.GroupDM,
                         avatarInfo: AvatarInfo(
-                          uniqueId: "Yuval Noah",
+                          uniqueId: "@yuval:lorem.org",
                           displayName: "Yuval Noah",
                         ),
                         avatarsInfo: [
                           AvatarInfo(
-                            uniqueId: "Zoey Gen",
+                            uniqueId: "@zoey:ipsum.org",
                             displayName: 'Zoey Gen',
                           ),
                         ],
@@ -593,20 +591,20 @@ class _MyHomePageState extends State<MyHomePage> {
                       ActerAvatar(
                         mode: DisplayMode.GroupDM,
                         avatarInfo: AvatarInfo(
-                          uniqueId: "Zoey Gen",
+                          uniqueId: "@zoey:ipsum.org",
                           displayName: 'Zoey Gen',
                         ),
                         avatarsInfo: [
                           AvatarInfo(
-                            uniqueId: "Yuval Noah",
+                            uniqueId: "@yuval:lorem.org",
                             displayName: "Yuval Noah",
                           ),
                           AvatarInfo(
-                            uniqueId: "Yuval Noah",
+                            uniqueId: "@yuval:lorem.org",
                             displayName: "Yuval Noah",
                           ),
                           AvatarInfo(
-                            uniqueId: "Yuval Noah",
+                            uniqueId: "@yuval:lorem.org",
                             displayName: "Yuval Noah",
                           ),
                         ],
@@ -621,18 +619,18 @@ class _MyHomePageState extends State<MyHomePage> {
                       ActerAvatar(
                         mode: DisplayMode.GroupDM,
                         avatarInfo: AvatarInfo(
-                          uniqueId: "avatar-1",
+                          uniqueId: "@aliKah:lorem.org",
                           displayName: "",
                           avatar: AssetImage('assets/images/avatar-1.jpg'),
                         ),
                         avatarsInfo: [
                           AvatarInfo(
-                            uniqueId: "avatar-2",
+                            uniqueId: "@bulut:ipsum.org",
                             displayName: "Bulut Peker",
                             avatar: AssetImage('assets/images/avatar-2.jpg'),
                           ),
                           AvatarInfo(
-                            uniqueId: "avatar-2",
+                            uniqueId: "@bulut:ipsum.org",
                             displayName: "Bulut Peker",
                             avatar: AssetImage('assets/images/avatar-2.jpg'),
                           ),
@@ -644,14 +642,14 @@ class _MyHomePageState extends State<MyHomePage> {
                       ActerAvatar(
                         mode: DisplayMode.GroupDM,
                         avatarInfo: AvatarInfo(
-                          uniqueId: "avatar-2",
+                          uniqueId: "@bulut:ipsum.org",
                           displayName: "Bulut Peker",
                           avatar: AssetImage('assets/images/avatar-2.jpg'),
                         ),
                         avatarsInfo: [
                           AvatarInfo(
-                            uniqueId: "avatar-1",
-                            displayName: "",
+                            uniqueId: "@aliKah:lorem.org",
+                            displayName: "Ali Akalin",
                             avatar: AssetImage('assets/images/avatar-1.jpg'),
                           ),
                         ],
@@ -662,19 +660,19 @@ class _MyHomePageState extends State<MyHomePage> {
                       ActerAvatar(
                         mode: DisplayMode.GroupDM,
                         avatarInfo: AvatarInfo(
-                          uniqueId: 'avatar-3',
+                          uniqueId: '@ceylin:lipsum.org',
                           displayName: "Ceylin Oztürk",
                           avatar: AssetImage('assets/images/avatar-3.jpg'),
                         ),
                         avatarsInfo: [
                           AvatarInfo(
-                            uniqueId: "avatar-1",
-                            displayName: "",
+                            uniqueId: "@aliKah:lorem.org",
+                            displayName: "Ali Akalin",
                             avatar: AssetImage('assets/images/avatar-1.jpg'),
                           ),
                           AvatarInfo(
-                            uniqueId: "avatar-1",
-                            displayName: "",
+                            uniqueId: "@aliKah:lorem.org",
+                            displayName: "Ali Akalin",
                             avatar: AssetImage('assets/images/avatar-1.jpg'),
                           ),
                         ],
