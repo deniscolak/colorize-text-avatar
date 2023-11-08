@@ -6,7 +6,7 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 import 'package:acter_avatar/acter_avatar.dart';
-import 'package:example/constants/keys.dart';
+import 'package:acter_avatar/src/constants/keys.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';

@@ -1,5 +1,4 @@
 import 'package:acter_avatar/acter_avatar.dart';
-import 'package:acter_avatar/src/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
 
@@ -414,8 +413,7 @@ class _ActerAvatar extends State<ActerAvatar> {
           children: <Widget>[
             TextAvatar(
               text: widget.avatarInfo.displayName ??
-                  simplifyUserId(widget.avatarInfo.uniqueId) ??
-                  '!',
+                  widget.avatarsInfo![0].uniqueId,
               sourceText: widget.avatarInfo.uniqueId,
               size: fallbackSize,
               shape: Shape.Rectangle,
@@ -435,9 +433,7 @@ class _ActerAvatar extends State<ActerAvatar> {
                                   message: secTooltipMsg(),
                                   child: TextAvatar(
                                     text: widget.avatarsInfo![0].displayName ??
-                                        simplifyUserId(
-                                            widget.avatarsInfo![0].uniqueId) ??
-                                        '!',
+                                        widget.avatarsInfo![0].uniqueId,
                                     sourceText: widget.avatarsInfo![0].uniqueId,
                                     fontSize: 6,
                                     shape: Shape.Rectangle,
@@ -445,9 +441,7 @@ class _ActerAvatar extends State<ActerAvatar> {
                                 )
                               : TextAvatar(
                                   text: widget.avatarsInfo![0].displayName ??
-                                      simplifyUserId(
-                                          widget.avatarsInfo![0].uniqueId) ??
-                                      '!',
+                                      widget.avatarsInfo![0].uniqueId,
                                   sourceText: widget.avatarsInfo![0].uniqueId,
                                   fontSize: 6,
                                   shape: Shape.Rectangle,
@@ -460,9 +454,8 @@ class _ActerAvatar extends State<ActerAvatar> {
         );
       case DisplayMode.GroupChat:
         return TextAvatar(
-          text: widget.avatarInfo.displayName ??
-              simplifyUserId(widget.avatarInfo.uniqueId) ??
-              '!',
+          text:
+              widget.avatarInfo.displayName ?? widget.avatarsInfo![0].uniqueId,
           sourceText: widget.avatarsInfo![0].uniqueId,
           size: fallbackSize,
           shape: Shape.Rectangle,
