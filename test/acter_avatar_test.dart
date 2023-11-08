@@ -13,7 +13,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group('Circular Avatar tests', () {
-    testWidgets('User Circle Avatar (Fallback) with specified size',
+    testWidgets('User Circle Avatar with specified size',
         (WidgetTester tester) async {
       await tester.pumpWidget(MaterialApp(
         home: Scaffold(
@@ -34,7 +34,7 @@ void main() {
       expect(avatarSize.height, equals(36 * 2));
       expect(avatarSize.width, equals(36 * 2));
     });
-    testWidgets('User Circle Avatar (Fallback) with unspecified size',
+    testWidgets('User Circle Avatar with fallback size',
         (WidgetTester tester) async {
       await tester.pumpWidget(MaterialApp(
         home: Scaffold(
