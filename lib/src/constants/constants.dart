@@ -3,9 +3,6 @@ enum Shape { Rectangle, Circular, None }
 
 /// DisplayMode configures the `ActerAvatar` way of displaying the avatar
 enum DisplayMode {
-  /// Display the avatar as defined for showing a user (circle)
-  User,
-
   /// Display the avatar for spaces
   Space,
 
@@ -14,6 +11,9 @@ enum DisplayMode {
 
   /// Display for direct messages between people
   DM,
+
+  /// Display for Group DM
+  GroupDM
 }
 
 /// Do you want the `ActerAvatar` wrapped in a `Tooltip`, configure it here
@@ -30,3 +30,6 @@ enum TooltipStyle {
   /// Combine DisplayName and UniqueId or UniqueName as the Tooltip
   Combined,
 }
+
+/// badge size for `DisplayMode.Space` parent.
+const badgeSize = 20.0;

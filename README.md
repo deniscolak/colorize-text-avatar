@@ -2,6 +2,10 @@
 
 Acter Avatar is a package to generate avatar for the acter platform.
 
+# CI Test Status
+
+<a href="https://github.com/acterglobal/acter-avatar/actions"><img src="https://github.com/acterglobal/acter-avatar/workflows/acter-avatar-tests/badge.svg" alt="Build Status"></a>
+
 ## Progress
 
 - [x] `TextAvatars` based on text with custom color generator
