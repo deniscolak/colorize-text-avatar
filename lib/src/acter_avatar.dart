@@ -412,8 +412,7 @@ class _ActerAvatar extends State<ActerAvatar> {
           clipBehavior: Clip.none,
           children: <Widget>[
             TextAvatar(
-              text: widget.avatarInfo.displayName ??
-                  widget.avatarsInfo![0].uniqueId,
+              text: widget.avatarInfo.displayName ?? widget.avatarInfo.uniqueId,
               sourceText: widget.avatarInfo.uniqueId,
               size: fallbackSize,
               shape: Shape.Rectangle,

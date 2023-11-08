@@ -8,7 +8,6 @@
 import 'package:acter_avatar/acter_avatar.dart';
 import 'package:acter_avatar/src/constants/keys.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -25,7 +24,7 @@ void main() {
           ),
         ),
       ));
-      await tester.pumpAndSettle(Duration(seconds: 3));
+      await tester.pumpAndSettle();
       final Size avatarSize =
           tester.getSize(find.byKey(TestKeys.circleAvatarKey));
 
@@ -45,7 +44,7 @@ void main() {
           ),
         ),
       ));
-      await tester.pumpAndSettle(Duration(seconds: 3));
+      await tester.pumpAndSettle();
       final Size avatarSize =
           tester.getSize(find.byKey(TestKeys.circleAvatarKey));
       // should expect default fallback avatar size
@@ -55,15 +54,14 @@ void main() {
 
     testWidgets('User Circle Avatar with AssetImage render',
         (WidgetTester tester) async {
-      final String imagePath = 'assets/images/avatar-1.jpg';
-      await rootBundle.load(imagePath);
-      final assetImage = AssetImage(imagePath);
+      final String imagePath =
+          'https://st.depositphotos.com/1898481/5087/i/450/depositphotos_50878063-stock-photo-people.jpg';
+      final image = NetworkImage(imagePath);
       await tester.pumpWidget(MaterialApp(
         home: Scaffold(
           body: ActerAvatar(
             key: TestKeys.circleAvatarKey,
-            avatarInfo:
-                AvatarInfo(uniqueId: '@test:acter.org', avatar: assetImage),
+            avatarInfo: AvatarInfo(uniqueId: '@test:acter.org', avatar: image),
             mode: DisplayMode.DM,
           ),
         ),
@@ -74,7 +72,7 @@ void main() {
       expect(avatarFinder, findsOneWidget);
       final avatar = avatarFinder.evaluate().first.widget as ActerAvatar;
       // should expect Asset Image in case of image render.
-      expect(avatar.avatarInfo.avatar, AssetImage(imagePath));
+      expect(avatar.avatarInfo.avatar, NetworkImage(imagePath));
     });
   });
 
@@ -119,28 +117,27 @@ void main() {
       expect(avatarSize.width, equals(48));
     });
 
-    testWidgets('Rectangular Avatar with AssetImage render',
+    testWidgets('Rectangular Avatar with NetworkImage render',
         (WidgetTester tester) async {
-      final String imagePath = 'assets/images/avatar-1.jpg';
-      await rootBundle.load(imagePath);
-      final assetImage = AssetImage(imagePath);
+      final String imagePath =
+          'https://st5.depositphotos.com/38460822/63964/i/600/depositphotos_639649504-stock-photo-mail-sign-sign-alphabet-made.jpg';
+      final image = NetworkImage(imagePath);
       await tester.pumpWidget(MaterialApp(
         home: Scaffold(
           body: ActerAvatar(
-            key: TestKeys.circleAvatarKey,
-            avatarInfo:
-                AvatarInfo(uniqueId: '@test:acter.org', avatar: assetImage),
+            key: TestKeys.rectangleAvatarKey,
+            avatarInfo: AvatarInfo(uniqueId: '@test:acter.org', avatar: image),
             mode: DisplayMode.Space,
           ),
         ),
       ));
       await tester.pumpAndSettle();
-      final avatarFinder = find.byKey(TestKeys.circleAvatarKey);
+      final avatarFinder = find.byKey(TestKeys.rectangleAvatarKey);
       // should expect `ActerAvatar` is present
       expect(avatarFinder, findsOneWidget);
       final avatar = avatarFinder.evaluate().first.widget as ActerAvatar;
       // should expect Asset Image in case of image render.
-      expect(avatar.avatarInfo.avatar, AssetImage(imagePath));
+      expect(avatar.avatarInfo.avatar, NetworkImage(imagePath));
     });
 
     testWidgets('Rectangular Avatar Parent Badge specified size',
@@ -186,19 +183,17 @@ void main() {
       expect(sizedBoxSize.height, equals(20));
       expect(sizedBoxSize.width, equals(20));
     });
-    testWidgets('Rectangular Avatar Parent badge with AssetImage render',
+    testWidgets('Rectangular Avatar Parent badge with NetworkImage render',
         (WidgetTester tester) async {
-      final String imagePath = 'assets/images/space-1.jpg';
-      await rootBundle.load(imagePath);
-      final assetImage = AssetImage(imagePath);
+      final String imagePath =
+          'https://st5.depositphotos.com/38460822/63964/i/600/depositphotos_639649504-stock-photo-mail-sign-sign-alphabet-made.jpg';
+      final image = NetworkImage(imagePath);
       await tester.pumpWidget(MaterialApp(
         home: Scaffold(
           body: ActerAvatar(
             key: TestKeys.rectangleAvatarKey,
             avatarInfo: AvatarInfo(uniqueId: '@test:acter.org'),
-            avatarsInfo: [
-              AvatarInfo(uniqueId: 'Acter-Global', avatar: assetImage)
-            ],
+            avatarsInfo: [AvatarInfo(uniqueId: 'Acter-Global', avatar: image)],
             mode: DisplayMode.Space,
           ),
         ),
@@ -209,7 +204,7 @@ void main() {
       expect(avatarFinder, findsOneWidget);
       final avatar = avatarFinder.evaluate().first.widget as ActerAvatar;
       // should expect parent badge Asset Image in case of image render.
-      expect(avatar.avatarsInfo?[0].avatar, AssetImage(imagePath));
+      expect(avatar.avatarsInfo?[0].avatar, NetworkImage(imagePath));
     });
   });
 
@@ -269,25 +264,24 @@ void main() {
       expect(secondAvatarSize.height, equals(48));
       expect(secondAvatarSize.width, equals(48));
     });
-    testWidgets('Circular Stacked Avatars with AssetImage render',
+    testWidgets('Circular Stacked Avatars with NetworkImage render',
         (WidgetTester tester) async {
-      final String imagePath = 'assets/images/avatar-1.jpg';
-      final String image2Path = 'assets/images/avatar-2.jpg';
-      await rootBundle.load(imagePath);
-      await rootBundle.load(image2Path);
-      final assetImage = AssetImage(imagePath);
-      final asset2Image = AssetImage(image2Path);
+      final String imagePath =
+          'https://st.depositphotos.com/1898481/5087/i/450/depositphotos_50878063-stock-photo-people.jpg';
+      final String image2Path =
+          'https://st.depositphotos.com/1898481/4683/i/600/depositphotos_46839071-stock-photo-male-person-silhouette.jpg';
+      final image = NetworkImage(imagePath);
+      final secondaryImage = NetworkImage(image2Path);
       await tester.pumpWidget(MaterialApp(
         home: Scaffold(
           body: ActerAvatar(
             key: TestKeys.stackedAvatarKey,
-            avatarInfo:
-                AvatarInfo(uniqueId: '@test:acter.org', avatar: assetImage),
+            avatarInfo: AvatarInfo(uniqueId: '@test:acter.org', avatar: image),
             mode: DisplayMode.GroupDM,
             avatarsInfo: [
               AvatarInfo(
                 uniqueId: '@kyra:acter.org',
-                avatar: asset2Image,
+                avatar: secondaryImage,
               )
             ],
           ),
@@ -299,8 +293,8 @@ void main() {
       expect(avatarFinder, findsOneWidget);
       final avatar = avatarFinder.evaluate().first.widget as ActerAvatar;
       // should expect Asset Image in case of image render.
-      expect(avatar.avatarInfo.avatar, AssetImage(imagePath));
-      expect(avatar.avatarsInfo?[0].avatar, AssetImage(image2Path));
+      expect(avatar.avatarInfo.avatar, NetworkImage(imagePath));
+      expect(avatar.avatarsInfo?[0].avatar, NetworkImage(image2Path));
     });
   });
 }
