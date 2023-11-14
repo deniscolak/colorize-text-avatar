@@ -29,8 +29,9 @@ void main() {
           tester.getSize(find.byKey(TestKeys.circleAvatarKey));
 
       // should expect specified fallback size
-      expect(avatarSize.height, equals(36));
-      expect(avatarSize.width, equals(36));
+      // diameter (size) is twice of radius size so we would expect x2 of specified size
+      expect(avatarSize.height, equals(36 * 2));
+      expect(avatarSize.width, equals(36 * 2));
     });
     testWidgets('User Circle Avatar with fallback size',
         (WidgetTester tester) async {
@@ -225,14 +226,16 @@ void main() {
           tester.getSize(find.byKey(TestKeys.stackedAvatarKey));
 
       // should expect first avatar specified size
-      expect(avatarSize.height, equals(24));
-      expect(avatarSize.width, equals(24));
+      // diameter (size) is twice of radius size so we would expect x2 of specified size
+      expect(avatarSize.height, equals(24 * 2));
+      expect(avatarSize.width, equals(24 * 2));
 
       final secondAvatarSize = tester.getSize(find.byType(Positioned));
 
       // should expect second avatar specified size
-      expect(secondAvatarSize.height, equals(24));
-      expect(secondAvatarSize.width, equals(24));
+      // diameter (size) is twice of radius size so we would expect x2 of specified size
+      expect(secondAvatarSize.height, equals(24 * 2));
+      expect(secondAvatarSize.width, equals(24 * 2));
     });
     testWidgets('Circular Stacked Avatars with fallback size',
         (WidgetTester tester) async {
