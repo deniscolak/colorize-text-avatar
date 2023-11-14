@@ -29,9 +29,8 @@ void main() {
           tester.getSize(find.byKey(TestKeys.circleAvatarKey));
 
       // should expect specified fallback size
-      // diameter (size) is twice of radius size so we would expect x2 of specified size
-      expect(avatarSize.height, equals(36 * 2));
-      expect(avatarSize.width, equals(36 * 2));
+      expect(avatarSize.height, equals(36));
+      expect(avatarSize.width, equals(36));
     });
     testWidgets('User Circle Avatar with fallback size',
         (WidgetTester tester) async {
@@ -94,9 +93,8 @@ void main() {
           tester.getSize(find.byKey(TestKeys.rectangleAvatarKey));
 
       // should expect specified fallback size
-      // diameter (size) is twice of radius size so we would expect x2 of specified size
-      expect(avatarSize.height, equals(36 * 2));
-      expect(avatarSize.width, equals(36 * 2));
+      expect(avatarSize.height, equals(36));
+      expect(avatarSize.width, equals(36));
     });
     testWidgets('Rectangular Avatar with fallback size',
         (WidgetTester tester) async {
@@ -227,16 +225,14 @@ void main() {
           tester.getSize(find.byKey(TestKeys.stackedAvatarKey));
 
       // should expect first avatar specified size
-      // diameter (size) is twice of radius size so we would expect x2 of specified size
-      expect(avatarSize.height, equals(24 * 2));
-      expect(avatarSize.width, equals(24 * 2));
+      expect(avatarSize.height, equals(24));
+      expect(avatarSize.width, equals(24));
 
       final secondAvatarSize = tester.getSize(find.byType(Positioned));
 
       // should expect second avatar specified size
-      // diameter (size) is twice of radius size so we would expect x2 of specified size
-      expect(secondAvatarSize.height, equals(24 * 2));
-      expect(secondAvatarSize.width, equals(24 * 2));
+      expect(secondAvatarSize.height, equals(24));
+      expect(secondAvatarSize.width, equals(24));
     });
     testWidgets('Circular Stacked Avatars with fallback size',
         (WidgetTester tester) async {
