@@ -344,7 +344,7 @@ class _ActerAvatar extends State<ActerAvatar> {
 
   Widget renderFallback(BuildContext context) {
     double badgeOverflow = badgeSize / 5;
-    double fallbackSize = widget.size == null ? 48 : widget.size! * 2.0;
+    double fallbackSize = widget.size == null ? 48 : widget.size!;
 
     /// Fallback
     switch (widget.mode) {
@@ -453,10 +453,10 @@ class _ActerAvatar extends State<ActerAvatar> {
         );
       case DisplayMode.GroupChat:
         return TextAvatar(
-          text:
-              widget.avatarInfo.displayName ?? widget.avatarsInfo![0].uniqueId,
-          sourceText: widget.avatarsInfo![0].uniqueId,
-          size: fallbackSize,
+          text: widget.avatarInfo.displayName ?? widget.avatarInfo.uniqueId,
+          sourceText: widget.avatarInfo.uniqueId,
+          size: 24,
+          fontSize: 6,
           shape: Shape.Rectangle,
         );
     }
