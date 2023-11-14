@@ -66,19 +66,21 @@ class _ActerAvatar extends State<ActerAvatar> {
         ImageStreamListener(setSecondaryImage, onError: setSecondaryImageError);
 
     if (widget.avatarInfo.avatar != null) {
-      if (widget.avatarsInfo != null && widget.avatarsInfo!.isNotEmpty) {
-        widget.avatarsInfo![0].avatar!
-            .resolve(ImageConfiguration())
-            .addListener(secondaryListener);
-      }
       widget.avatarInfo.avatar!
           .resolve(ImageConfiguration())
           .addListener(listener);
+      if (widget.avatarsInfo != null && widget.avatarsInfo!.isNotEmpty) {
+        if (widget.avatarsInfo![0].avatar != null) {
+          widget.avatarsInfo![0].avatar!
+              .resolve(ImageConfiguration())
+              .addListener(secondaryListener);
+        }
+      }
     } else if (widget.avatarInfo.imageProviderFuture != null) {
+      fetchImageProvider(listener);
       if (widget.avatarsInfo != null && widget.avatarsInfo!.isNotEmpty) {
         fetchSecondaryImageProvider(secondaryListener);
       }
-      fetchImageProvider(listener);
     }
   }
 
@@ -455,7 +457,7 @@ class _ActerAvatar extends State<ActerAvatar> {
         return TextAvatar(
           text: widget.avatarInfo.displayName ?? widget.avatarInfo.uniqueId,
           sourceText: widget.avatarInfo.uniqueId,
-          size: 24,
+          size: widget.size ?? 24,
           fontSize: 6,
           shape: Shape.Rectangle,
         );
