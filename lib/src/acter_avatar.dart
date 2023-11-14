@@ -234,7 +234,9 @@ class _ActerAvatar extends State<ActerAvatar> {
             Positioned(
               bottom: -badgeOverflow,
               right: -badgeOverflow,
-              child: widget.avatarsInfo == null || widget.avatarsInfo!.isEmpty
+              child: (widget.avatarsInfo == null ||
+                      widget.avatarsInfo!.isEmpty ||
+                      widget.avatarsInfo![0].avatar == null)
                   ? SizedBox(height: badgeSize + badgeOverflow)
                   : Column(
                       children: <Widget>[
@@ -346,7 +348,8 @@ class _ActerAvatar extends State<ActerAvatar> {
 
   Widget renderFallback(BuildContext context) {
     double badgeOverflow = badgeSize / 5;
-    double fallbackSize = widget.size == null ? 48 : widget.size!;
+    double textFallbackSize = widget.size == null ? 48 : widget.size!;
+    double multiFallbackSize = widget.size == null ? 48 : widget.size! * 2.0;
 
     /// Fallback
     switch (widget.mode) {
@@ -354,7 +357,7 @@ class _ActerAvatar extends State<ActerAvatar> {
         // User fallback mode
         return MultiAvatar(
           uniqueId: widget.avatarInfo.uniqueId,
-          size: fallbackSize,
+          size: multiFallbackSize,
         );
       case DisplayMode.GroupDM:
         return widget.avatarsInfo != null && widget.avatarsInfo!.isNotEmpty
@@ -364,7 +367,7 @@ class _ActerAvatar extends State<ActerAvatar> {
                 children: [
                   MultiAvatar(
                     uniqueId: widget.avatarInfo.uniqueId,
-                    size: fallbackSize,
+                    size: multiFallbackSize,
                   ),
                   Positioned(
                     left: -7,
@@ -374,12 +377,12 @@ class _ActerAvatar extends State<ActerAvatar> {
                             message: secTooltipMsg(),
                             child: MultiAvatar(
                               uniqueId: widget.avatarsInfo![0].uniqueId,
-                              size: fallbackSize,
+                              size: multiFallbackSize,
                             ),
                           )
                         : MultiAvatar(
                             uniqueId: widget.avatarsInfo![0].uniqueId,
-                            size: fallbackSize,
+                            size: multiFallbackSize,
                           ),
                   ),
                   widget.avatarsInfo!.length > 1
@@ -407,7 +410,7 @@ class _ActerAvatar extends State<ActerAvatar> {
               )
             : MultiAvatar(
                 uniqueId: widget.avatarInfo.uniqueId,
-                size: fallbackSize,
+                size: multiFallbackSize,
               );
       case DisplayMode.Space:
         return Stack(
@@ -416,7 +419,7 @@ class _ActerAvatar extends State<ActerAvatar> {
             TextAvatar(
               text: widget.avatarInfo.displayName ?? widget.avatarInfo.uniqueId,
               sourceText: widget.avatarInfo.uniqueId,
-              size: fallbackSize,
+              size: textFallbackSize,
               shape: Shape.Rectangle,
             ),
             Positioned(
@@ -457,7 +460,7 @@ class _ActerAvatar extends State<ActerAvatar> {
         return TextAvatar(
           text: widget.avatarInfo.displayName ?? widget.avatarInfo.uniqueId,
           sourceText: widget.avatarInfo.uniqueId,
-          size: widget.size ?? 24,
+          size: widget.size ?? 48,
           fontSize: 6,
           shape: Shape.Rectangle,
         );
