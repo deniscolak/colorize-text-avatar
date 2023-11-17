@@ -29,17 +29,25 @@ class ActerAvatar extends StatefulWidget {
   /// and `DisplayMode.GroupDM`
   final TooltipStyle secondaryToolTip;
 
-  /// See [UserInfo].
+  /// See [AvatarInfo].
   final AvatarInfo avatarInfo;
 
-  /// A list holding [UserInfo].
+  /// Avatar gesture tap
+  final void Function()? onAvatarTap;
+
+  /// A list holding [AvatarInfo].
   /// Useful for showing stacked avatars for `DisplayMode.GroupDM` or `DisplayMode.Space` parentBadge.
   final List<AvatarInfo>? avatarsInfo;
+
+  /// Avatar gesture tap for parent badge of `DisplayMode.Space`.
+  final void Function()? onParentBadgeTap;
 
   ActerAvatar(
       {Key? key,
       required this.avatarInfo,
       required this.mode,
+      this.onAvatarTap,
+      this.onParentBadgeTap,
       this.avatarsInfo,
       this.tooltip = TooltipStyle.Combined,
       this.secondaryToolTip = TooltipStyle.Combined,
@@ -122,7 +130,8 @@ class _ActerAvatar extends State<ActerAvatar> {
 
   @override
   Widget build(BuildContext context) {
-    final child = inner(context);
+    final child =
+        GestureDetector(onTap: widget.onAvatarTap, child: inner(context));
     switch (widget.tooltip) {
       case TooltipStyle.DisplayName:
         return Tooltip(
@@ -238,15 +247,29 @@ class _ActerAvatar extends State<ActerAvatar> {
                       widget.avatarsInfo!.isEmpty ||
                       widget.avatarsInfo![0].avatar == null)
                   ? SizedBox(height: badgeSize + badgeOverflow)
-                  : Column(
-                      children: <Widget>[
-                        SizedBox(
-                          height: widget.badgeSize ?? badgeSize,
-                          width: widget.badgeSize ?? badgeSize,
-                          child: widget.secondaryToolTip != TooltipStyle.None
-                              ? Tooltip(
-                                  message: secTooltipMsg(),
-                                  child: Container(
+                  : GestureDetector(
+                      onTap: widget.onParentBadgeTap,
+                      child: Column(
+                        children: <Widget>[
+                          SizedBox(
+                            height: widget.badgeSize ?? badgeSize,
+                            width: widget.badgeSize ?? badgeSize,
+                            child: widget.secondaryToolTip != TooltipStyle.None
+                                ? Tooltip(
+                                    message: secTooltipMsg(),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(6.0),
+                                        image: DecorationImage(
+                                          fit: BoxFit.cover,
+                                          image: widget.avatarsInfo![0].avatar!,
+                                          onError: secondaryAvatarError,
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                : Container(
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(6.0),
                                       image: DecorationImage(
@@ -256,19 +279,9 @@ class _ActerAvatar extends State<ActerAvatar> {
                                       ),
                                     ),
                                   ),
-                                )
-                              : Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(6.0),
-                                    image: DecorationImage(
-                                      fit: BoxFit.cover,
-                                      image: widget.avatarsInfo![0].avatar!,
-                                      onError: secondaryAvatarError,
-                                    ),
-                                  ),
-                                ),
-                        ),
-                      ],
+                          ),
+                        ],
+                      ),
                     ),
             ),
           ],
@@ -427,31 +440,36 @@ class _ActerAvatar extends State<ActerAvatar> {
               right: -badgeOverflow,
               child: widget.avatarsInfo == null || widget.avatarsInfo!.isEmpty
                   ? SizedBox(height: badgeSize + badgeOverflow)
-                  : Column(
-                      children: <Widget>[
-                        SizedBox(
-                          height: widget.badgeSize ?? badgeSize,
-                          width: widget.badgeSize ?? badgeSize,
-                          child: widget.secondaryToolTip != TooltipStyle.None
-                              ? Tooltip(
-                                  message: secTooltipMsg(),
-                                  child: TextAvatar(
+                  : GestureDetector(
+                      onTap: widget.onParentBadgeTap,
+                      child: Column(
+                        children: <Widget>[
+                          SizedBox(
+                            height: widget.badgeSize ?? badgeSize,
+                            width: widget.badgeSize ?? badgeSize,
+                            child: widget.secondaryToolTip != TooltipStyle.None
+                                ? Tooltip(
+                                    message: secTooltipMsg(),
+                                    child: TextAvatar(
+                                      text:
+                                          widget.avatarsInfo![0].displayName ??
+                                              widget.avatarsInfo![0].uniqueId,
+                                      sourceText:
+                                          widget.avatarsInfo![0].uniqueId,
+                                      fontSize: 6,
+                                      shape: Shape.Rectangle,
+                                    ),
+                                  )
+                                : TextAvatar(
                                     text: widget.avatarsInfo![0].displayName ??
                                         widget.avatarsInfo![0].uniqueId,
                                     sourceText: widget.avatarsInfo![0].uniqueId,
                                     fontSize: 6,
                                     shape: Shape.Rectangle,
                                   ),
-                                )
-                              : TextAvatar(
-                                  text: widget.avatarsInfo![0].displayName ??
-                                      widget.avatarsInfo![0].uniqueId,
-                                  sourceText: widget.avatarsInfo![0].uniqueId,
-                                  fontSize: 6,
-                                  shape: Shape.Rectangle,
-                                ),
-                        ),
-                      ],
+                          ),
+                        ],
+                      ),
                     ),
             ),
           ],

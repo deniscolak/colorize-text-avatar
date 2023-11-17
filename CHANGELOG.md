@@ -1,5 +1,15 @@
 ## Unreleased
 
+### [1.0.0]
+
+- Breaking Changes: ActerAvatar now supports `AvatarInfo` for specifying avatar data instead of singleton parameters.
+- added support for Group DM, GroupChat and Rectangle Avatars
+- added support for parent badge for `DisplayMode.Space`
+- added support for secondary stacked avatar for `DisplayMode.GroupDM`
+- optimisation for avatar and fallback sizes
+- added ci unit tests for avatar size, render and tap behavior
+- Acter Avatar now supports `onAvatarTap()` and `onParentBadgeTap` for avatar gesture.
+
 ### [0.0.7]
 
 - add logging support

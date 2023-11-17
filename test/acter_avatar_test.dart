@@ -296,4 +296,110 @@ void main() {
       expect(avatar.avatarsInfo?[0].avatar, NetworkImage(image2Path));
     });
   });
+
+  group('Acter avatars interaction', () {
+    GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+    void onTapped(BuildContext ctx, String name) {
+      ScaffoldMessenger.of(ctx).showSnackBar(SnackBar(
+        content: Text(name),
+        duration: const Duration(milliseconds: 750),
+      ));
+    }
+
+    testWidgets('test primary avatar interaction', (WidgetTester tester) async {
+      await tester.pumpWidget(MaterialApp(
+        navigatorKey: navigatorKey,
+        home: Scaffold(
+          body: Builder(builder: (context) {
+            return Column(
+              children: <Widget>[
+                ActerAvatar(
+                  key: TestKeys.circleAvatarKey,
+                  avatarInfo: AvatarInfo(uniqueId: '@test:acter.org'),
+                  mode: DisplayMode.DM,
+                  onAvatarTap: () => onTapped(context, 'DM Avatar tapped'),
+                ),
+                ActerAvatar(
+                  key: TestKeys.stackedAvatarKey,
+                  avatarInfo: AvatarInfo(uniqueId: '@test:acter.org'),
+                  mode: DisplayMode.GroupDM,
+                  avatarsInfo: [
+                    AvatarInfo(
+                      uniqueId: '@kyra:acter.org',
+                    )
+                  ],
+                  onAvatarTap: () =>
+                      onTapped(context, 'Group DM Avatar tapped'),
+                ),
+                ActerAvatar(
+                  key: TestKeys.widgetKey,
+                  avatarInfo: AvatarInfo(uniqueId: '@test:acter.org'),
+                  mode: DisplayMode.GroupChat,
+                  onAvatarTap: () =>
+                      onTapped(context, 'Group Chat Avatar tapped'),
+                ),
+                ActerAvatar(
+                  key: TestKeys.rectangleAvatarKey,
+                  avatarInfo: AvatarInfo(uniqueId: '@test:acter.org'),
+                  mode: DisplayMode.Space,
+                  onAvatarTap: () => onTapped(context, 'Space Avatar tapped'),
+                ),
+              ],
+            );
+          }),
+        ),
+      ));
+      final dmGestureFinder = find.descendant(
+          of: find.byKey(TestKeys.circleAvatarKey),
+          matching: find.byType(GestureDetector));
+      // we have found the Gesture Detector, proceed with tester operation
+      expect(dmGestureFinder, findsOneWidget);
+
+      final groupDMGestureFinder = find.descendant(
+          of: find.byKey(TestKeys.stackedAvatarKey),
+          matching: find.byType(GestureDetector));
+      // we have found the Gesture Detector, proceed with tester operation
+      expect(groupDMGestureFinder, findsOneWidget);
+
+      final groupChatGestureFinder = find.descendant(
+          of: find.byKey(TestKeys.widgetKey),
+          matching: find.byType(GestureDetector));
+      // we have found the Gesture Detector, proceed with tester operation
+      expect(groupChatGestureFinder, findsOneWidget);
+
+      final spaceGestureFinder = find.descendant(
+          of: find.byKey(TestKeys.rectangleAvatarKey),
+          matching: find.byType(GestureDetector));
+      // we have found the Gesture Detector, proceed with tester operation
+      expect(spaceGestureFinder, findsOneWidget);
+
+      await tester.tap(dmGestureFinder);
+      await tester.pump();
+      expect(find.text('DM Avatar tapped'), findsOneWidget);
+
+      // dismissing snackbar
+      ScaffoldMessenger.of(navigatorKey.currentContext!).clearSnackBars();
+
+      await tester.tap(groupDMGestureFinder);
+      await tester.pump();
+      expect(find.text('Group DM Avatar tapped'), findsOneWidget);
+
+      // dismissing snackbar
+      ScaffoldMessenger.of(navigatorKey.currentContext!).clearSnackBars();
+
+      await tester.tap(groupChatGestureFinder);
+      await tester.pump();
+      expect(find.text('Group Chat Avatar tapped'), findsOneWidget);
+
+      // dismissing snackbar
+      ScaffoldMessenger.of(navigatorKey.currentContext!).clearSnackBars();
+
+      await tester.tap(spaceGestureFinder);
+      await tester.pump();
+      expect(find.text('Space Avatar tapped'), findsOneWidget);
+    });
+
+    /// TODO: add test for parent badge interaction. Currently facing issues
+    /// with finding deep descendant Gesture Detector.
+  });
 }
