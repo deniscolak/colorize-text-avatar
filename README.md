@@ -1,6 +1,6 @@
 # Acter Avatar
 
-Acter Avatar is a package to generate different shapes of avatars by leveraging the combination of [Multiavatar](https://pub.dev/packages/multiavatar) library and Textual Avatar mechanism. The package is a derivative work from [Acter a3](https://github.com/acterglobal/a3) ongoing development.
+Acter Avatar is a package to generate different shapes of avatars by leveraging the combination of [Multiavatar](https://pub.dev/packages/multiavatar) library and [Colorize Text Avatar](https://pub.dev/packages/colorize_text_avatar) . The package is a derivative work from [Acter a3](https://github.com/acterglobal/a3) ongoing development.
 
 # CI Test Status
 
