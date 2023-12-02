@@ -1,6 +1,6 @@
 # Acter Avatar
 
-Acter Avatar is a package to generate avatars for the acter platform. This package allows to generate different types and shapes of avatar(s), internally using combination of [Multiavatar](https://pub.dev/packages/multiavatar) and Textual Avatar mechanism.
+Acter Avatar is a package to generate different shapes of avatars by leveraging the combination of [Multiavatar](https://pub.dev/packages/multiavatar) library and Textual Avatar mechanism. The package is a derivative work from [Acter a3](https://github.com/acterglobal/a3) ongoing development.
 
 # CI Test Status
 
@@ -8,17 +8,17 @@ Acter Avatar is a package to generate avatars for the acter platform. This packa
 
 ## Parameters of ActerAvatar:
 
-| Parameter          | Description                                        | Type                | Default |
-| :----------------- | :------------------------------------------------- | :------------------ | :------ | --------------------- |
-| `mode`             | enum for rendering avatar shape (required).        | _enum_              |         |                       |
-| `size`             | Size of Avatar (optional).                         | _double_            |         |                       |
-| `badgeSize`        | Size of Space Avatar parent badge (optional).      | _double_            |         |                       |
-| `tooltip`          | `ActerAvatar` tooltip.                             | _TooltipStyle_      |         | TooltipStyle.Combined |
-| `secondaryToolTip` | Space Avatar OR Stack secondary avatar tooltip.    | _TooltipStyle_      |         | TooltipStyle.Combined |
-| `avatarInfo`       | Holds avatar data. See [AvatarInfo] below section. | _AvatarInfo_        |         |                       |
-| `onAvatarTap`      | Primary avatar interacton function (optional).     | _Function()?_       |         |                       |
-| `avatarsInfo`      | for space and circular stack avatars.(optional)    | _List<AvatarInfo>?_ |         | []                    |
-| `onParentBadgeTap` | Secondary avatar interaction function (optional).  | _Function()?_       |         |                       |
+| Parameter          |                    Description                     | Type                |
+| :----------------- | :------------------------------------------------: | :------------------ |
+| `mode`             |    enum for rendering avatar shape (required).     | _enum_              |
+| `size`             |             Size of Avatar (optional).             | _double_            |
+| `badgeSize`        |   Size of Space Avatar parent badge (optional).    | _double_            |
+| `tooltip`          |               `ActerAvatar` tooltip.               | _TooltipStyle_      |
+| `secondaryToolTip` |  Space Avatar OR Stack secondary avatar tooltip.   | _TooltipStyle_      |
+| `avatarInfo`       | Holds avatar data. See [AvatarInfo] below section. | _AvatarInfo_        |
+| `onAvatarTap`      |   Primary avatar interacton function (optional).   | _Function()?_       |
+| `avatarsInfo`      |  for space and circular stack avatars.(optional)   | _List<AvatarInfo>?_ |
+| `onParentBadgeTap` | Secondary avatar interaction function (optional).  | _Function()?_       |
 
 ## AvatarInfo
 
