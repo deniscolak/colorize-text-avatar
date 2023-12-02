@@ -1,96 +1,69 @@
 # Acter Avatar
 
-Acter Avatar is a package to generate avatar for the acter platform.
+Acter Avatar is a package to generate avatars for the acter platform. This package allows to generate different types of avatar(s), internally using combination of [Multiavatar](https://pub.dev/packages/multiavatar) and Textual Avatar mechanism to generate different shapes and stack like
+avatars.
 
 # CI Test Status
 
 <a href="https://github.com/acterglobal/acter-avatar/actions"><img src="https://github.com/acterglobal/acter-avatar/workflows/acter-avatar-tests/badge.svg" alt="Build Status"></a>
 
-## Progress
+## Parameters of ActerAvatar:
 
-- [x] `TextAvatars` based on text with custom color generator
-- [-] Generic `ActerAvatar` with:
-  - [ ] automatic selection of shape & mode
-  - [ ] image loader
-  - [ ] optional border-support (with optional coloring support)
-  - [x] [multiavatar](https://pub.dev/packages/multiavatar) fallback support
-- [ ] Generic `ActerAvatarPill` for inline displaying with:
-  - [ ] internal `ActerAvatar`, click-action
+| Parameter          | Description                                        | Type                | Default |
+| :----------------- | :------------------------------------------------- | :------------------ | :------ | --------------------- |
+| `mode`             | enum for rendering avatar shape (required).        | _enum_              |         |                       |
+| `size`             | Size of Avatar (optional).                         | _double_            |         |                       |
+| `badgeSize`        | Size of Space Avatar parent badge (optional).      | _double_            |         |                       |
+| `tooltip`          | `ActerAvatar` tooltip.                             | _TooltipStyle_      |         | TooltipStyle.Combined |
+| `secondaryToolTip` | Space Avatar OR Stack secondary avatar tooltip.    | _TooltipStyle_      |         | TooltipStyle.Combined |
+| `avatarInfo`       | Holds avatar data. See [AvatarInfo] below section. | _AvatarInfo_        |         |                       |
+| `onAvatarTap`      | Primary avatar interacton function (optional).     | _Function()?_       |         |                       |
+| `avatarsInfo`      | for space and circular stack avatars.(optional)    | _List<AvatarInfo>?_ |         | []                    |
+| `onParentBadgeTap` | Secondary avatar interaction function (optional).  | _Function()?_       |         |                       |
 
----
+## AvatarInfo
 
-## Components:
+`AvatarInfo` class allows you to store avatar related data. See API documentation for reference.
 
-TextAvatar can generate avatars based on any string. It generates the background and foreground color based on your input string and shows the avatar via the text initials. Enjoy it!
+### Usage of ActerAvatar 😎
 
-![Acter Text Avatar](https://github.com/acterglobal/acter-avatar/raw/master/example/screenshots/img_4.png)
-
-## Getting Started 🔥
-
-It is an easy and powerful package to generate text avatars for your users!
-
-Let's see how to generate an avatar easily!
-
-### Usage of Acter's Text Avatar 😎
-
-Here is the only mandatory parameter is text.
+`ActerAvatar` takes both `mode` and `avatarInfo` param to render avatar. The param `uniqueId` in `AvatarInfo` is required.
 
 ```dart
-TextAvatar(
-    text: "Deniz Çolak",
-)
+      ActerAvatar(
+        mode: DisplayMode.DM,
+        avatarInfo: AvatarInfo(
+        uniqueId: '@aliKah:lorem.org',
+        displayName: 'Ali Akalın',
+        avatar: NetworkImage(*someImageLink*)),  // can be any image provider .i.e. AssetImage, MemoryImage and NetworkImage etc.
+      ),
 ```
 
-![Acter Text Avatar](https://github.com/acterglobal/acter-avatar/raw/master/example/screenshots/img_1.png)
-
-### Parameters of Text Avatar 😎
-
-Here is the predefined shapes: Rectangle, Circular or None, if shape is null or not defined the default value similar with Rectangle but not same.
-
-> Shape.Rectangle, Shape.Circular, Shape.None can be use.
+Alternatively you can also provide future avatar in `AvatarInfo` which will show fallback until loaded if data isn't readily available.
 
 ```dart
-TextAvatar(
-    shape: Shape.Circular,
-    text: "Deniz Çolak"
-)
+      ActerAvatar(
+        mode: DisplayMode.DM,
+        avatarInfo: AvatarInfo(
+        uniqueId: '@aliKah:lorem.org',
+        displayName: 'Ali Akalın',
+        avatarFuture: someFuture),  // can be any image provider .i.e. AssetImage, MemoryImage and NetworkImage etc.
+      ),
 ```
 
-![Acter Text Avatar](https://github.com/acterglobal/acter-avatar/raw/master/example/screenshots/img_2.png)
-
-numberLetters parameter allows user to generate Avatar more specific number of character.
-
-> Developer can predefine `size` and `numberLetters`, if `numberLetters` is null or not defined the default value is `1`.
+You can also provide list of `AvatarInfo` with `avatarsInfo` param for displaying parent badges and circular stacked avatars.
 
 ```dart
-TextAvatar(
-    shape: Shape.Rectangle,
-    size: 35,
-    numberLetters: 2,
-
-)
-```
-
-![Acter Text Avatar](https://github.com/acterglobal/acter-avatar/raw/master/example/screenshots/img_3.png)
-
-Other parameters can be change according to your specification.
-
-> Developers can extend the `TextAvatar` model according to their specification, currently below parameters are supported.
-
-```dart
-TextAvatar(
-    shape: Shape.Circular,
-    size: 35
-    fontSize: 14,
-    fontWeight: FontWeight.w600,
-    upperCase: true,
-    colorMaker: ColorMaker.bold(),
-    colorGenerator: // custom ColorGenerator-function. colorMaker takes precedence
-    numberLetters: 1,
-
-    text: this.widget.userdata.displayname,
-    sourceText: this.widget.userdata.username,
-)
+      ActerAvatar(
+        mode: DisplayMode.Space,
+        avatarInfo: AvatarInfo(
+        uniqueId: '@aliKah:lorem.org',
+        displayName: 'Ali Akalın',
+        avatar: NetworkImage(*someImageLink*),
+        avatarInfo: [
+          // more `AvatarInfo` here.
+        ]),
+      ),
 ```
 
 ## Credits & License

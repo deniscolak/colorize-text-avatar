@@ -84,7 +84,7 @@ class _ActerAvatar extends State<ActerAvatar> {
               .addListener(secondaryListener);
         }
       }
-    } else if (widget.avatarInfo.imageProviderFuture != null) {
+    } else if (widget.avatarInfo.avatarFuture != null) {
       fetchImageProvider(listener);
       if (widget.avatarsInfo != null && widget.avatarsInfo!.isNotEmpty) {
         fetchSecondaryImageProvider(secondaryListener);
@@ -93,13 +93,13 @@ class _ActerAvatar extends State<ActerAvatar> {
   }
 
   void fetchImageProvider(ImageStreamListener listener) async {
-    var res = await widget.avatarInfo.imageProviderFuture!;
+    var res = await widget.avatarInfo.avatarFuture!;
     res!.resolve(ImageConfiguration()).addListener(listener);
     avatar = res;
   }
 
   void fetchSecondaryImageProvider(ImageStreamListener listener) async {
-    var res = await widget.avatarsInfo![0].imageProviderFuture!;
+    var res = await widget.avatarsInfo![0].avatarFuture!;
     res!.resolve(ImageConfiguration()).addListener(listener);
     secondaryAvatar = res;
   }
