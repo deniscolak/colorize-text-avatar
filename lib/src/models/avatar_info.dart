@@ -1,28 +1,26 @@
 import 'package:flutter/material.dart';
 
 class AvatarInfo {
-  /// the uniqueId of this object (e.g. full username or roomId)
-  /// used to calculate the Multiavatar in `DisplayMode.User`.
+  /// the uniqueId of avatar
   final String uniqueId;
 
-  /// the display name they've chosen
+  /// the display name they've chosen (optional)
   final String? displayName;
 
-  /// a canonical uniqueName to use instead of the uniqueId in the tooltip, if given.
-  /// most commonly this is the canonical alias for a space/room rather than the roomID
+  /// if given, acts as alias for avatar in tooltip rather than `uniqueId`
   final String? uniqueName;
 
-  /// The actual avatar (takes precedence)
+  /// The actual avatar image renderer (takes precedence over `imageProviderFuture`)
   final ImageProvider<Object>? avatar;
 
-  /// Or alternatively a future that loads the avatar (show fallback until loaded)
-  final Future<ImageProvider<Object>?>? imageProviderFuture;
+  /// a future that loads the avatar (show fallback until loaded)
+  final Future<ImageProvider<Object>?>? avatarFuture;
 
   const AvatarInfo({
     required this.uniqueId,
     this.displayName,
     this.uniqueName,
     this.avatar,
-    this.imageProviderFuture,
+    this.avatarFuture,
   });
 }
