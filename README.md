@@ -8,17 +8,17 @@ Acter Avatar is a package to generate different shapes of avatars by leveraging 
 
 ## Parameters of ActerAvatar:
 
-| Parameter          |                    Description                     | Type                |
-| :----------------- | :------------------------------------------------: | :------------------ |
-| `mode`             |    enum for rendering avatar shape (required).     | _enum_              |
-| `size`             |             Size of Avatar (optional).             | _double_            |
-| `badgeSize`        |   Size of Space Avatar parent badge (optional).    | _double_            |
-| `tooltip`          |               `ActerAvatar` tooltip.               | _TooltipStyle_      |
-| `secondaryToolTip` |  Space Avatar OR Stack secondary avatar tooltip.   | _TooltipStyle_      |
-| `avatarInfo`       | Holds avatar data. See [AvatarInfo] below section. | _AvatarInfo_        |
-| `onAvatarTap`      |   Primary avatar interacton function (optional).   | _Function()?_       |
-| `avatarsInfo`      |  for space and circular stack avatars.(optional)   | _List<AvatarInfo>?_ |
-| `onParentBadgeTap` | Secondary avatar interaction function (optional).  | _Function()?_       |
+| Parameter          |                                         Description                                         | Type                |
+| :----------------- | :-----------------------------------------------------------------------------------------: | :------------------ |
+| `mode`             | [DisplayMode](lib/src/constants/constants.dart) enum for rendering avatar shape (required). | _enum_              |
+| `size`             |                                 Size of Avatar (optional).                                  | _double_            |
+| `badgeSize`        |                        Size of Space Avatar parent badge (optional).                        | _double_            |
+| `tooltip`          |                                   `ActerAvatar` tooltip.                                    | _TooltipStyle_      |
+| `secondaryToolTip` |                       Space Avatar OR Stack secondary avatar tooltip.                       | _TooltipStyle_      |
+| `avatarInfo`       |                     Holds avatar data. See [AvatarInfo] below section.                      | _AvatarInfo_        |
+| `onAvatarTap`      |                       Primary avatar interacton function (optional).                        | _Function()?_       |
+| `avatarsInfo`      |                       for space and circular stack avatars.(optional)                       | _List<AvatarInfo>?_ |
+| `onParentBadgeTap` |                      Secondary avatar interaction function (optional).                      | _Function()?_       |
 
 ## AvatarInfo
 
