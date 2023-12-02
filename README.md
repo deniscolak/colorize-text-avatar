@@ -1,7 +1,6 @@
 # Acter Avatar
 
-Acter Avatar is a package to generate avatars for the acter platform. This package allows to generate different types of avatar(s), internally using combination of [Multiavatar](https://pub.dev/packages/multiavatar) and Textual Avatar mechanism to generate different shapes and stack like
-avatars.
+Acter Avatar is a package to generate avatars for the acter platform. This package allows to generate different types and shapes of avatar(s), internally using combination of [Multiavatar](https://pub.dev/packages/multiavatar) and Textual Avatar mechanism.
 
 # CI Test Status
 
