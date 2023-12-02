@@ -26,19 +26,19 @@ Acter Avatar is a package to generate different shapes of avatars by leveraging 
 
 ### Usage of ActerAvatar 😎
 
-`ActerAvatar` takes both `mode` and `avatarInfo` param to render avatar. The param `uniqueId` in `AvatarInfo` is required.
+`ActerAvatar` takes both `mode` and `avatarInfo` param to render avatar.
 
 ```dart
       ActerAvatar(
         mode: DisplayMode.DM,
         avatarInfo: AvatarInfo(
-        uniqueId: '@aliKah:lorem.org',
+        uniqueId: '@aliKah:lorem.org', // required
         displayName: 'Ali Akalın',
         avatar: NetworkImage(*someImageLink*)),  // can be any image provider .i.e. AssetImage, MemoryImage and NetworkImage etc.
       ),
 ```
 
-Alternatively you can also provide future avatar in `AvatarInfo` which will show fallback until loaded if data isn't readily available.
+Alternatively you can also provide future avatar in `AvatarInfo` which will show fallback if data isn't readily available.
 
 ```dart
       ActerAvatar(
