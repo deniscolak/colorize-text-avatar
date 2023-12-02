@@ -15,7 +15,7 @@ Acter Avatar is a package to generate different shapes of avatars by leveraging 
 | `badgeSize`        |                        Size of Space Avatar parent badge (optional).                        | _double_            |
 | `tooltip`          |                                   `ActerAvatar` tooltip.                                    | _TooltipStyle_      |
 | `secondaryToolTip` |                       Space Avatar OR Stack secondary avatar tooltip.                       | _TooltipStyle_      |
-| `avatarInfo`       |                     Holds avatar data. See [AvatarInfo] below section.                      | _AvatarInfo_        |
+| `avatarInfo`       |               Holds avatar data. See [AvatarInfo](#avatarinfo) below section.               | _AvatarInfo_        |
 | `onAvatarTap`      |                       Primary avatar interacton function (optional).                        | _Function()?_       |
 | `avatarsInfo`      |                       for space and circular stack avatars.(optional)                       | _List<AvatarInfo>?_ |
 | `onParentBadgeTap` |                      Secondary avatar interaction function (optional).                      | _Function()?_       |
