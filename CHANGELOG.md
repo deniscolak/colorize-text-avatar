@@ -1,3 +1,8 @@
+### [1.0.0+4]
+
+- bump package dependencies.
+- fix API usage in /example.
+
 ### [1.0.0+3]
 
 - release first stable version.
