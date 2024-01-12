@@ -132,7 +132,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       avatarInfo: AvatarInfo(
                           uniqueId: '@aliKah:lorem.org',
                           displayName: 'Ali Akalın',
-                          imageProviderFuture: getFutureImage),
+                          avatarFuture: getFutureImage),
                       size: 36,
                     ),
                     SizedBox(
@@ -178,7 +178,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       avatarInfo: AvatarInfo(
                         displayName: "Ali Akalın",
                         uniqueId: "@aliKah:lorem.org",
-                        imageProviderFuture: getFutureImage,
+                        avatarFuture: getFutureImage,
                       ),
                     ),
                     SizedBox(
@@ -484,7 +484,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         avatarInfo: AvatarInfo(
                           displayName: "Ali Akalın",
                           uniqueId: "@aliKah:lorem.org",
-                          imageProviderFuture: getFutureImage,
+                          avatarFuture: getFutureImage,
                         ),
                       ),
                       SizedBox(
