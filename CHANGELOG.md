@@ -1,3 +1,7 @@
+## [unreleased]
+
+- Fix: Show Parent even if we fallback for the main avatar
+
 ### [1.0.0+4]
 
 - bump package dependencies.
