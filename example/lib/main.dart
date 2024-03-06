@@ -210,7 +210,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 height: 20,
               ),
               Text(
-                'Rectangular Acter Avatars ',
+                'Space Acter Avatars ',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
               ),
               Padding(
@@ -308,7 +308,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               const SizedBox(height: 20),
               Text(
-                'Rectangular Acter Avatars With Parent Badge',
+                'Space Acter Avatars With Parent Badge',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
               ),
               Padding(
@@ -356,7 +356,10 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           avatarsInfo: [
                             AvatarInfo(
-                                uniqueId: uuid.v4(), displayName: 'Lorem Ipsum')
+                              displayName: "C-Space",
+                              uniqueId: uuid.v4(),
+                              avatar: AssetImage('assets/images/space-3.jpg'),
+                            ),
                           ],
                         ),
                         SizedBox(
@@ -409,6 +412,13 @@ class _MyHomePageState extends State<MyHomePage> {
                             uniqueId: uuid.v4(),
                             avatar: AssetImage('assets/images/space-3.jpg'),
                           ),
+                          avatarsInfo: [
+                            AvatarInfo(
+                              displayName: "C-Space",
+                              uniqueId: uuid.v4(),
+                              avatar: AssetImage('assets/images/space-3.jpg'),
+                            ),
+                          ],
                         ),
                       ],
                     ),
